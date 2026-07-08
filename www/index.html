@@ -83,12 +83,74 @@
   .inline-block { display: inline-block; }
   .w-full { width: 100%; }
   .tbl { table-layout: fixed; width: 100%; }
-</style>
+
+  /* ===== 移动端适配 ===== */
+  @media (max-width: 768px) {
+    /* 底部标签栏 */
+    .mobile-bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: #fff; border-top: 1px solid #eee; padding: 4px 0 12px;
+      display: flex; justify-content: space-around;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    }
+    .mobile-bottom-nav button {
+      flex: 1; border: none; background: none; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      font-size: 0.6rem; padding: 4px 0; transition: all 0.2s;
+      border-radius: 8px;
+    }
+    .mobile-bottom-nav button i { font-size: 1.15rem; }
+    body { padding-bottom: 70px; }
+    .top-tab-nav { display: none; }
+
+    /* 卡片替代表格 */
+    main .card table, main .card .tbl { display: none; }
+    main .card .mobile-card-list { display: block !important; }
+    .mobile-card-item {
+      display: flex; align-items: center; padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0; gap: 10px;
+    }
+    .mobile-card-item:last-child { border-bottom: none; }
+
+    /* 弹窗全屏 */
+    .modal-overlay .modal {
+      max-width: 100% !important; width: 100% !important;
+      min-height: 100vh; max-height: 100vh !important;
+      border-radius: 0; padding: 20px 16px;
+      margin: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      overflow-y: auto;
+    }
+    .modal-overlay { backdrop-filter: none !important; background: #fff !important; align-items: flex-start !important; padding-top: 0 !important; }
+
+    /* 快速操作按钮缩小 */
+    .quick-btn { min-width: 80px !important; padding: 10px 12px !important; font-size: 0.8rem !important; }
+    .quick-btn i { font-size: 1.1rem !important; }
+
+    /* 英雄区压缩 */
+    .hero-greeting { font-size: 1.4rem !important; }
+    .hero-greeting img { height: 100px !important; }
+
+    /* 患者卡片网格改为1列 */
+    .grid-cols-2.md\:grid-cols-4 { grid-template-columns: 1fr !important; }
+
+    /* 统计卡片更紧凑 */
+    .stat-card .text-2xl { font-size: 1.3rem !important; }
+
+    /* section-title 缩小 */
+    .section-title { font-size: 1rem !important; }
+
+    /* 备份区域在移动端隐藏 */
+    .card.mb-6.mt-8 { display: none !important; }
+  }
+  @media (min-width: 769px) {
+    .mobile-bottom-nav { display: none; }
+    .mobile-card-list { display: none !important; }
+  }
 </head>
 <body>
 <div id="app">
   <!-- Tab Navigation -->
-  <nav style="background:#b8f1ed;border-bottom:1px solid rgba(0,0,0,0.06)" class="sticky top-0 z-30 overflow-x-auto">
+  <nav style="background:#b8f1ed;border-bottom:1px solid rgba(0,0,0,0.06)" class="sticky top-0 z-30 overflow-x-auto top-tab-nav">
     <div class="max-w-6xl mx-auto flex px-5 gap-1">
       <button v-for="(t,i) in tabs" :key="t.id" @click="activeTab = t.id"
         class="nav-btn"
@@ -296,8 +358,25 @@
                   <button @click="delConsumption(c)" class="text-accent" title="删除"><i class="fas fa-trash text-xs"></i></button>
                 </td>
               </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+        <!-- Mobile card list -->
+        <div class="mobile-card-list">
+          <div v-for="(c,i) in g.records" :key="c.id" class="mobile-card-item">
+            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary-dark text-xs font-bold flex-shrink-0">{{g.patient_name?.[0] || '?'}}</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm">{{g.patient_name}} <span class="text-xs text-gray-400">#{{i+1}}</span></div>
+              <div class="text-xs text-gray-500 mt-0.5">{{c.month}}.{{c.day}} {{c.time_slot || '-'}} · {{c.project}}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-sm font-bold text-primary-dark">¥{{c.amount}}</div>
+              <div class="flex gap-2 mt-1 justify-end">
+                <button @click="editConsumption(c)" class="text-primary text-xs"><i class="fas fa-edit"></i></button>
+                <button @click="delConsumption(c)" class="text-accent text-xs"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
       <div v-else class="card">
@@ -325,6 +404,23 @@
             </tr>
           </tbody>
         </table>
+        <!-- Mobile card list -->
+        <div class="mobile-card-list">
+          <div v-for="(c,i) in filteredConsumption" :key="c.id" class="mobile-card-item">
+            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary-dark text-xs font-bold flex-shrink-0">{{c.patient_name?.[0] || '?'}}</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm">{{c.patient_name}} <span class="text-xs text-gray-400">#{{i+1}}</span></div>
+              <div class="text-xs text-gray-500 mt-0.5">{{c.month}}.{{c.day}} {{c.time_slot || '-'}} · {{c.project}}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-sm font-bold text-primary-dark">¥{{c.amount}}</div>
+              <div class="flex gap-2 mt-1 justify-end">
+                <button @click="editConsumption(c)" class="text-primary text-xs"><i class="fas fa-edit"></i></button>
+                <button @click="delConsumption(c)" class="text-accent text-xs"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -455,6 +551,14 @@
       </div>
     </div>
   </main>
+
+  <!-- ===== 移动端底部导航 ===== -->
+  <nav class="mobile-bottom-nav">
+    <button v-for="(t,i) in tabs" :key="t.id" @click="activeTab = t.id" :style="{color: activeTab===t.id ? tabColors[i] : '#999'}">
+      <i :class="t.icon"></i>
+      <span>{{t.name === 'dashboard' ? '首页' : t.name === 'appointments' ? '预约' : t.name === 'consumption' ? '耗卡' : t.name === 'projects' ? '项目' : t.name === 'patients' ? '患者' : '记录'}}</span>
+    </button>
+  </nav>
 
   <!-- ===== Modal: 新增/编辑预约 ===== -->
   <div v-if="showAptModal" class="modal-overlay" @click.self="showAptModal=false">

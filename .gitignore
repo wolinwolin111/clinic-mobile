@@ -4,3 +4,6 @@ dist/
 .capacitor/
 *.log
 .DS_Store
+apk-output/
+*.zip
+*.apk
