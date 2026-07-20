@@ -41,8 +41,6 @@
   .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 175, 172, 0.12); outline: none; }
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; }
   .modal { background: #fff; padding: 24px; max-width: 32rem; width: calc(100% - 2rem); margin: 0 auto; max-height: 90vh; overflow-y: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
-  .tag-ok { background: var(--mint); color: var(--primary-dark); padding: 2px 12px; border-radius: 9999px; font-size: 0.8125rem; font-weight: 500; }
-  .tag-pending { background: var(--yellow); color: var(--yellow-dark); padding: 2px 12px; border-radius: 9999px; font-size: 0.8125rem; font-weight: 500; }
   .text-primary { color: var(--primary); }
   .text-primary-dark { color: var(--primary-dark); }
   .text-secondary { color: var(--text-secondary); }
@@ -50,11 +48,9 @@
   .bg-primary-light { background: var(--primary-light); }
   .bg-accent-light { background: var(--accent-light); }
   .bg-warm { background: var(--warm-gray); }
-  .hover-bg-primary-light:hover { background: var(--primary-light); }
   .hover-text-primary:hover { color: var(--primary); }
   .hover-text-primary-dark:hover { color: var(--primary-dark); }
   .hover-text-accent:hover { color: var(--accent); }
-  .border-primary { border-color: var(--primary); }
   .link { cursor: pointer; color: var(--primary); font-weight: 500; }
   .link:hover { color: var(--primary-dark); }
   .sub-tab-active { border-bottom: 2px solid var(--primary); color: var(--primary); font-weight: 600; }
@@ -67,7 +63,6 @@
   .section-title i { font-size: 1rem; color: var(--primary); }
   .module-section { margin-bottom: 32px; }
   .table-header { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); background: #F8F9FA; }
-  .table-header th { }
   .hero-greeting { font-size: 1.875rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; letter-spacing: 0.06em; }
   .hero-sub { color: var(--text-secondary); font-size: 0.9375rem; }
   .nav-btn { padding: 10px 14px; font-size: 0.875rem; font-weight: 600; white-space: nowrap; transition: all 0.2s; color: var(--text-secondary); display: flex; align-items: center; gap: 5px; border-bottom: 2.5px solid transparent; margin-bottom: -1px; cursor: pointer; flex-shrink: 0; border-radius: 8px 8px 0 0; }
@@ -92,7 +87,6 @@
   .tab-active { border-bottom-color: transparent; background: rgba(255,255,255,0.95); box-shadow: 0 -2px 8px rgba(255,255,255,0.4); }
   .tab-active:hover { opacity: 1; }
   .hover-card-shadow:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-  .gradient-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(46, 175, 172, 0.2), transparent); margin: 2rem 0; }
   .cell { padding: 0.625rem 0.75rem; }
   .text-left { text-align: left; }
   .text-right { text-align: right; }
@@ -107,17 +101,11 @@
   #mobile-bottom-nav .mnav-btn { flex: 1; text-align: center; padding: 6px 2px 4px; font-size: 10px; cursor: pointer; border: none; background: transparent; color: #1A3A5C; transition: 0.2s; }
   #mobile-bottom-nav .mnav-btn i { display: block; font-size: 18px; margin-bottom: 1px; }
   #mobile-bottom-nav .mnav-btn.active { background: #fff; border-radius: 8px 8px 0 0; }
-  .mobile-card-list { display: none; }
-  .mobile-card { background: #fff; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .mobile-card .mc-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-  .mobile-card .mc-label { font-size: 12px; color: #666; }
-  .mobile-card .mc-value { font-size: 14px; font-weight: 500; }
   @media (max-width: 768px) {
     #mobile-bottom-nav { display: block; }
     .desktop-only { display: none !important; }
-    .mobile-card-list { display: block; }
-    .modal-overlay .modal-content { width: 94% !important; max-width: 94% !important; margin: 0 auto; top: 5% !important; max-height: 90vh !important; border-radius: 12px !important; }
-    .modal-overlay .modal-content .modal-body { max-height: 75vh !important; }
+    .modal-overlay .modal { width: 94% !important; max-width: 94% !important; margin: 0 auto; top: 5% !important; max-height: 90vh !important; border-radius: 12px !important; }
+    .modal-overlay .modal .modal-body { max-height: 75vh !important; }
     .sticky.top-0 { position: static !important; }
     main { padding-bottom: 12px; padding-left: 12px !important; padding-right: 12px !important; }
     .app-footer { padding-bottom: 80px; }
@@ -809,10 +797,6 @@ createApp({
     const editingAppointment = ref(null);
     const hoveredMonth = ref(0);
     const selectedDay = ref(null);
-    const selectedDaySorted = computed(() => {
-      if (!selectedDay.value) return [];
-      return [...selectedDay.value.appts].sort((a, b) => (a.time_slot || '').localeCompare(b.time_slot || ''));
-    });
 
     const dayTimeSlots = computed(() => {
       if (!selectedDay.value) return [];
@@ -1333,7 +1317,7 @@ const delConsumption = async (con) => {
       lastBackup, downloadBackup, exportExcel, hoveredMonth,
       goToApt, goToPatient, goToConsumption, goToProjects,
       aptMonth, showAptModal, editingAppointment, aptForm, editApt,
-      weekDays, timeSlots, maxDay, dayStyle, calendarDays, selectedDay, selectedDaySorted, dayTimeSlots, selectDay, prevMonth, nextMonth,
+      weekDays, timeSlots, maxDay, dayStyle, calendarDays, selectedDay, dayTimeSlots, selectDay, prevMonth, nextMonth,
       appointments, loadAppointments, saveAppointment,
       consumption, conPatientId, showConModal, editingConsumption, conForm,
       filteredConsumption, groupedConsumption, editConsumption, saveConsumption, delConsumption,
