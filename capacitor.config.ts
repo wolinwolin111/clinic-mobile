@@ -5,8 +5,8 @@ const config: CapacitorConfig = {
   appName: '悦舒康复',
   webDir: 'www',
   server: {
-    // 手机端直接访问 VPS，不使用本地 server
-    cleartext: true  // 允许 HTTP 请求
+    url: 'http://66.154.101.204/mobile/',
+    cleartext: true
   },
   android: {
     allowMixedContent: true

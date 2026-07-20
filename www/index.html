@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -259,9 +259,22 @@
         </div>
         <div class="card">
           <div class="section-title"><i class="fas fa-chart-bar text-primary"></i>月度营收</div>
-          <div class="flex gap-1.5 items-end h-40 pt-2">
-            <div v-for="m in 12" :key="m" class="flex-1 flex flex-col items-center">
-              <div class="w-full rounded-t-lg transition-all duration-300" :style="{height: getBarHeight(m)+'px', background: getBarColor(m)}" :title="getMonthTotal(m)+'元'"></div>
+          <div class="flex gap-1.5 items-end h-44 pt-2">
+            <div v-for="m in 12" :key="m" class="flex-1 flex flex-col items-center cursor-pointer"
+                 @mouseenter="hoveredMonth = m" @mouseleave="hoveredMonth = 0">
+              <div v-if="hoveredMonth === m" class="text-xs font-bold mb-1 px-2 py-0.5 rounded-full" style="background:var(--primary);color:white;white-space:nowrap">
+                ¥{{getMonthTotal(m).toLocaleString()}}
+              </div>
+              <div v-else class="mb-1" style="height:20px"></div>
+              <div class="w-full rounded-t-lg transition-all duration-200"
+                   :style="{
+                     height: (hoveredMonth===m ? getBarHeight(m)*1.2 : getBarHeight(m))+'px',
+                     background: getBarColor(m),
+                     transform: hoveredMonth===m ? 'scaleX(1.15)' : 'scaleX(1)',
+                     transformOrigin: 'bottom',
+                     opacity: hoveredMonth&&hoveredMonth!==m ? 0.55 : 1
+                   }"
+                   :title="'¥'+getMonthTotal(m).toLocaleString()"></div>
               <span class="text-xs text-gray-400 mt-1.5">{{m}}月</span>
             </div>
           </div>
@@ -435,16 +448,12 @@
         <span class="text-xs text-gray-400 bg-emerald-50 px-3 py-1.5 rounded-full">{{ lastBackup }}</span>
       </div>
       <div class="flex gap-3 flex-wrap">
-        <button @click="exportExcel" class="quick-btn" style="background:linear-gradient(135deg, #D1FAE5, #A7F3D0);color:#065F46;min-width:140px;padding:12px 18px;flex:none;font-size:0.9rem;flex-direction:row;gap:6px">
-          <i class="fas fa-file-excel" style="font-size:1.1rem"></i><span>导出Excel表</span>
+        <button @click="exportExcel" class="py-2.5 px-5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all hover:shadow-lg hover:-translate-y-0.5" style="background:var(--primary-gradient);color:white;box-shadow:0 2px 8px rgba(46,175,172,0.3)">
+          <i class="fas fa-file-excel text-base"></i>导出Excel表格
         </button>
-        <button @click="downloadBackup" class="quick-btn" style="background:linear-gradient(135deg, #E8F0FE, #D0E4FA);color:#1A5DAB;min-width:130px;padding:12px 18px;flex:none;font-size:0.9rem;flex-direction:row;gap:6px">
-          <i class="fas fa-download" style="font-size:1.1rem"></i><span>下载数据库备份</span>
+        <button @click="downloadBackup" class="py-2.5 px-5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all hover:shadow-lg hover:-translate-y-0.5" style="background:#fff;color:#374151;border:1.5px solid #E5E7EB">
+          <i class="fas fa-download text-base" style="color:#6B7280"></i>下载数据库备份
         </button>
-        <button @click="triggerRestore" class="quick-btn" style="background:linear-gradient(135deg, #FDE68A, #FCD34D);color:#92400E;min-width:130px;padding:12px 18px;flex:none;font-size:0.9rem;flex-direction:row;gap:6px">
-          <i class="fas fa-upload" style="font-size:1.1rem"></i><span>导入备份(.db)</span>
-        </button>
-        <input type="file" ref="restoreInput" accept=".db" style="display:none" @change="restoreFromFile">
       </div>
     </div>
 
@@ -549,7 +558,7 @@
         </div>
         <select v-model="aptForm.project" class="input">
           <option value="">选择项目</option>
-          <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}} (¥{{pr.default_price}})</option>
+          <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}}</option>
           <option value="其他">其他</option>
         </select>
         <div class="grid grid-cols-2 gap-3">
@@ -589,7 +598,7 @@
         <div class="grid grid-cols-2 gap-3">
           <select v-model="conForm.project" class="input">
             <option value="">选择项目</option>
-            <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}} (¥{{pr.default_price}})</option>
+            <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}}</option>
             <option value="其他">其他</option>
           </select>
           <input v-model.number="conForm.amount" type="number" placeholder="输入金额" class="input">
@@ -749,7 +758,7 @@
 
 <script>
 const { createApp, ref, reactive, computed, onMounted, nextTick, watch } = Vue;
-const API = 'http://66.154.101.204';
+const API = '';
 
 createApp({
   setup() {
@@ -798,6 +807,7 @@ createApp({
     const appointments = ref([]);
     const showAptModal = ref(false);
     const editingAppointment = ref(null);
+    const hoveredMonth = ref(0);
     const selectedDay = ref(null);
     const selectedDaySorted = computed(() => {
       if (!selectedDay.value) return [];
@@ -807,7 +817,7 @@ createApp({
     const dayTimeSlots = computed(() => {
       if (!selectedDay.value) return [];
       const hours = [];
-      for (let h = 8; h <= 20; h++) {
+      for (let h = 8; h <= 21; h++) {
         const label = h + ':00-' + (h + 1) + ':00';
         const slotAppts = selectedDay.value.appts.filter(a => {
           if (!a.time_slot) return false;
@@ -826,7 +836,7 @@ createApp({
     const aptForm = reactive({ patient_id: '', month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true });
 
     const weekDays = ['一','二','三','四','五','六','日'];
-    const timeSlots = ['8:00-9:00','9:00-10:00','10:00-11:00','11:00-12:00','13:00-14:00','14:00-15:00','15:00-16:00','16:00-17:00','17:00-18:00'];
+    const timeSlots = ['8:00-9:00','9:00-10:00','10:00-11:00','11:00-12:00','12:00-13:00','13:00-14:00','14:00-15:00','15:00-16:00','16:00-17:00','17:00-18:00','18:00-19:00','19:00-20:00','20:00-21:00','21:00-22:00'];
     const maxDay = (month) => [31,29,31,30,31,30,31,31,30,31,30,31][(month||1)-1];
 
     const calendarDays = computed(() => {
@@ -1086,7 +1096,6 @@ const delConsumption = async (con) => {
     };
 
     const lastBackup = ref('');
-    const restoreInput = ref(null);
     const downloadBackup = () => {
       window.location.href = API + '/api/backup';
       const now = new Date();
@@ -1099,36 +1108,6 @@ const delConsumption = async (con) => {
       lastBackup.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
       showToast('Excel表格已导出');
     };
-    const triggerRestore = () => {
-      restoreInput.value?.click();
-    };
-    const restoreFromFile = async (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      if (!confirm(`将从 "${file.name}" 恢复数据库，当前数据将被替换。确定？`)) { e.target.value = ''; return; }
-      const form = new FormData();
-      form.append('file', file);
-      try {
-        const res = await fetch(API + '/api/restore-db', { method: 'POST', body: form });
-        const data = await res.json();
-        if (res.ok) {
-          showToast(data.message);
-          setTimeout(() => location.reload(), 1000);
-        } else {
-          showToast(data.error || '恢复失败');
-        }
-      } catch {
-        showToast('网络错误');
-      }
-      e.target.value = '';
-    };
-    const restoreToExcel = async () => {
-      if (!confirm('将数据库中的预约数据同步到Excel文件，确定？')) return;
-      const res = await fetch(API + '/api/restore', {method: 'GET'});
-      const data = res.ok ? await res.json() : null;
-      showToast(res.ok ? (data?.message || '已从数据库恢复预约到Excel') : '恢复失败');
-    };
-
     const recentAppointments = computed(() => {
       return [...appointments.value].sort((a,b) => (b.month*100 + b.day) - (a.month*100 + a.day)).slice(0, 5);
     });
@@ -1351,7 +1330,7 @@ const delConsumption = async (con) => {
       tabs, tabColors, activeTab, toast,
       patients, projects, loadPatients, showToast, findPatient,
       stats, loadStats, getBarHeight, getBarColor, getMonthTotal, recentAppointments,
-      lastBackup, downloadBackup, exportExcel, restoreToExcel, restoreInput, triggerRestore, restoreFromFile,
+      lastBackup, downloadBackup, exportExcel, hoveredMonth,
       goToApt, goToPatient, goToConsumption, goToProjects,
       aptMonth, showAptModal, editingAppointment, aptForm, editApt,
       weekDays, timeSlots, maxDay, dayStyle, calendarDays, selectedDay, selectedDaySorted, dayTimeSlots, selectDay, prevMonth, nextMonth,

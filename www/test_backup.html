@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -70,8 +70,25 @@
   .table-header th { }
   .hero-greeting { font-size: 1.875rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; letter-spacing: 0.06em; }
   .hero-sub { color: var(--text-secondary); font-size: 0.9375rem; }
-  .nav-btn { padding: 10px 18px; font-size: 0.875rem; font-weight: 600; white-space: nowrap; transition: all 0.2s; color: var(--text-secondary); display: flex; align-items: center; gap: 7px; border-bottom: 2.5px solid transparent; margin-bottom: -1px; cursor: pointer; flex-shrink: 0; border-radius: 8px 8px 0 0; }
+  .nav-btn { padding: 10px 14px; font-size: 0.875rem; font-weight: 600; white-space: nowrap; transition: all 0.2s; color: var(--text-secondary); display: flex; align-items: center; gap: 5px; border-bottom: 2.5px solid transparent; margin-bottom: -1px; cursor: pointer; flex-shrink: 0; border-radius: 8px 8px 0 0; }
   .nav-btn:hover { opacity: 0.85; }
+  @media (max-width: 1024px) { .nav-btn { flex: 1; justify-content: center; padding: 10px 6px; font-size: 0.8rem; gap: 4px; } }
+  @media (max-width: 768px) { .nav-btn { flex: 1; font-size: 0.75rem; padding: 8px 4px; } }
+  @media (max-width: 1100px) { .quick-btn { padding: 14px 12px !important; min-width: 100px !important; font-size: 0.85rem !important; } }
+  @media (max-width: 900px) { .quick-btn { min-width: 80px !important; padding: 12px 10px !important; font-size: 0.8rem !important; gap: 6px !important; } }
+  @media (max-width: 768px) {
+    .quick-btn { min-width: 70px !important; padding: 8px 8px !important; font-size: 0.75rem !important; gap: 4px !important; }
+    .quick-btn i { font-size: 1.1rem !important; }
+  }
+  @media (max-width: 768px) { .quick-actions { flex-wrap: wrap; } .quick-actions .quick-btn { flex: 1 1 calc(50% - 6px); min-width: 0 !important; } }
+  @media (max-width: 480px) { .quick-btn { min-width: 60px !important; padding: 6px 6px !important; font-size: 0.7rem !important; } .quick-actions .quick-btn { flex: 1 1 100%; } }
+  @media (max-width: 600px) { button:not(.mnav-btn):not(.nav-btn) { font-size: 0.8rem; } }
+  @media (max-width: 400px) { button:not(.mnav-btn):not(.nav-btn) { font-size: 0.75rem; } }
+  html { overflow-x: clip; width: 100%; max-width: 100vw; margin: 0; padding: 0; }
+  body { overflow-x: hidden; width: 100%; max-width: 100vw; margin: 0; padding: 0; }
+  #app { max-width: 100vw; overflow-x: clip; }
+  .max-w-6xl { max-width: 100% !important; }
+  .card, .max-w-6xl { overflow-x: hidden; }
   .tab-active { border-bottom-color: transparent; background: rgba(255,255,255,0.95); box-shadow: 0 -2px 8px rgba(255,255,255,0.4); }
   .tab-active:hover { opacity: 1; }
   .hover-card-shadow:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
@@ -83,12 +100,55 @@
   .inline-block { display: inline-block; }
   .w-full { width: 100%; }
   .tbl { table-layout: fixed; width: 100%; }
+
+  /* ===== Mobile Styles ===== */
+  #mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: #b8f1ed; border-top: 1px solid rgba(0,0,0,0.08); }
+  #mobile-bottom-nav .mnav-inner { display: flex; }
+  #mobile-bottom-nav .mnav-btn { flex: 1; text-align: center; padding: 6px 2px 4px; font-size: 10px; cursor: pointer; border: none; background: transparent; color: #1A3A5C; transition: 0.2s; }
+  #mobile-bottom-nav .mnav-btn i { display: block; font-size: 18px; margin-bottom: 1px; }
+  #mobile-bottom-nav .mnav-btn.active { background: #fff; border-radius: 8px 8px 0 0; }
+  .mobile-card-list { display: none; }
+  .mobile-card { background: #fff; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .mobile-card .mc-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .mobile-card .mc-label { font-size: 12px; color: #666; }
+  .mobile-card .mc-value { font-size: 14px; font-weight: 500; }
+  @media (max-width: 768px) {
+    #mobile-bottom-nav { display: block; }
+    .desktop-only { display: none !important; }
+    .mobile-card-list { display: block; }
+    .modal-overlay .modal-content { width: 94% !important; max-width: 94% !important; margin: 0 auto; top: 5% !important; max-height: 90vh !important; border-radius: 12px !important; }
+    .modal-overlay .modal-content .modal-body { max-height: 75vh !important; }
+    .sticky.top-0 { position: static !important; }
+    main { padding-bottom: 12px; padding-left: 12px !important; padding-right: 12px !important; }
+    .app-footer { padding-bottom: 80px; }
+    table { max-width: 100%; }
+    .cell { padding: 4px !important; font-size: 0.75rem !important; }
+    .table-header { font-size: 0.7rem !important; }
+    @media (max-width: 380px) { .mnav-btn { font-size: 9px; padding: 4px 1px 3px; } .mnav-btn i { font-size: 15px; } }
+    .backup-section { display: none !important; }
+    .hero-logo { height: 125px !important; width: auto !important; max-width: 125px !important; }
+    .hero-box { padding: 18px 22px !important; }
+    .hero-inner { flex-direction: column !important; align-items: center !important; }
+    .hero-left { width: 100%; }
+    .hero-row { flex-direction: row !important; align-items: center !important; gap: 10px !important; flex-wrap: nowrap !important; }
+    .hero-greeting { font-size: 1.3rem; font-weight: 900; line-height: 1.5; text-align: left; }
+    .hero-sub { font-size: 1.1rem; color: #666; font-weight: 400; text-align: left; }
+    .hero-btns { flex-direction: column; width: 100%; gap: 6px !important; }
+    .hero-btns .quick-btn { width: 100%; justify-content: center; }
+    .stat-card { padding: 12px !important; }
+    .stat-card .text-2xl { font-size: 1.25rem !important; }
+    .cal-cell { min-height: 40px !important; padding: 3px 2px !important; font-size: 0.75rem !important; }
+  }
+  @media (min-width: 769px) {
+    #mobile-bottom-nav { display: none !important; }
+    .mobile-card-list { display: none !important; }
+  }
 </style>
 </head>
 <body>
 <div id="app">
   <!-- Tab Navigation -->
-  <nav style="background:#b8f1ed;border-bottom:1px solid rgba(0,0,0,0.06)" class="sticky top-0 z-30 overflow-x-auto">
+  <nav style="background:#b8f1ed;border-bottom:1px solid rgba(0,0,0,0.06)" class="sticky top-0 z-30 desktop-only">
     <div class="max-w-6xl mx-auto flex px-5 gap-1">
       <button v-for="(t,i) in tabs" :key="t.id" @click="activeTab = t.id"
         class="nav-btn"
@@ -104,15 +164,18 @@
     <!-- ========== 首页仪表盘 ========== -->
     <div v-if="activeTab==='dashboard'">
       <!-- Hero 区域 -->
-      <div class="bg-white rounded-3xl mb-6 border border-gray-100/80" style="padding:6px 16px;box-shadow:var(--shadow)">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-          <div>
-            <div class="flex items-center gap-3">
-              <img src="static/logo-transparent.png" alt="" style="height:190px;width:auto">
-              <div class="hero-greeting" style="font-weight:900">欢迎来到<span style="color:#026AB1">悦舒</span><span style="color:#000">运动康复</span></div>
+      <div class="bg-white rounded-3xl mb-6 border border-gray-100/80 hero-box" style="padding:6px 16px;box-shadow:var(--shadow)">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 hero-inner">
+          <div class="hero-left">
+            <div class="flex items-center gap-3 hero-row">
+              <img src="static/logo-transparent.png" alt="" class="hero-logo" style="height:190px;width:auto">
+              <div class="hero-greeting">
+                <div class="hero-sub">欢迎来到</div>
+                <div><span style="color:#026AB1">悦舒</span><span style="color:#000">运动康复</span></div>
+              </div>
             </div>
           </div>
-          <div class="flex gap-2">
+          <div class="flex gap-2 hero-btns">
             <button @click="goToApt" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:110px;padding:8px 14px;flex:none"><i class="fas fa-calendar-plus"></i><span>新建预约</span></button>
             <button @click="goToPatient" class="quick-btn" style="background:linear-gradient(135deg, var(--mint), #D0F5E5);color:var(--primary-dark);min-width:110px;padding:8px 14px;flex:none"><i class="fas fa-user-plus"></i><span>新建患者</span></button>
           </div>
@@ -122,7 +185,7 @@
       <!-- 数据概览模块 -->
       <div class="mb-8">
         <div class="section-title"><i class="fas fa-chart-pie text-primary"></i>数据概览</div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 gap-3">
           <div class="card stat-card cursor-pointer" @click="activeTab='appointments'" style="border-top:3px solid var(--primary)">
             <div class="stat-icon"><i class="fas fa-yen-sign text-primary"></i></div>
             <div class="text-xs text-gray-400 mb-1 font-medium">年度营收</div>
@@ -148,7 +211,7 @@
       <div class="mb-8">
         <div class="section-title"><i class="fas fa-bolt text-primary"></i>快捷操作</div>
         <div class="card">
-        <div style="display:flex;gap:12px">
+        <div class="quick-actions" style="display:flex;gap:12px">
           <div class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark)" @click="goToApt">
             <i class="fas fa-calendar-plus"></i>
             <span>新增预约</span>
@@ -196,9 +259,22 @@
         </div>
         <div class="card">
           <div class="section-title"><i class="fas fa-chart-bar text-primary"></i>月度营收</div>
-          <div class="flex gap-1.5 items-end h-40 pt-2">
-            <div v-for="m in 12" :key="m" class="flex-1 flex flex-col items-center">
-              <div class="w-full rounded-t-lg transition-all duration-300" :style="{height: getBarHeight(m)+'px', background: getBarColor(m)}" :title="getMonthTotal(m)+'元'"></div>
+          <div class="flex gap-1.5 items-end h-44 pt-2">
+            <div v-for="m in 12" :key="m" class="flex-1 flex flex-col items-center cursor-pointer"
+                 @mouseenter="hoveredMonth = m" @mouseleave="hoveredMonth = 0">
+              <div v-if="hoveredMonth === m" class="text-xs font-bold mb-1 px-2 py-0.5 rounded-full" style="background:var(--primary);color:white;white-space:nowrap">
+                ¥{{getMonthTotal(m).toLocaleString()}}
+              </div>
+              <div v-else class="mb-1" style="height:20px"></div>
+              <div class="w-full rounded-t-lg transition-all duration-200"
+                   :style="{
+                     height: (hoveredMonth===m ? getBarHeight(m)*1.2 : getBarHeight(m))+'px',
+                     background: getBarColor(m),
+                     transform: hoveredMonth===m ? 'scaleX(1.15)' : 'scaleX(1)',
+                     transformOrigin: 'bottom',
+                     opacity: hoveredMonth&&hoveredMonth!==m ? 0.55 : 1
+                   }"
+                   :title="'¥'+getMonthTotal(m).toLocaleString()"></div>
               <span class="text-xs text-gray-400 mt-1.5">{{m}}月</span>
             </div>
           </div>
@@ -222,7 +298,7 @@
           <div v-for="d in weekDays" :key="d">{{d}}</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">
-          <div v-for="(day,idx) in calendarDays" :key="idx" @click="selectDay(day)" style="min-height:64px;padding:6px 4px;border:1px solid #f0f0f0;font-size:0.85rem;text-align:left;cursor:pointer" :style="dayStyle(day)">
+          <div v-for="(day,idx) in calendarDays" :key="idx" @click="selectDay(day)" class="cal-cell" style="min-height:64px;padding:6px 4px;border:1px solid #f0f0f0;font-size:0.85rem;text-align:left;cursor:pointer" :style="dayStyle(day)">
             <div style="font-weight:700;font-size:0.95rem">{{day.day}}</div>
             <div v-if="day.hasAppts" style="width:6px;height:6px;border-radius:50%;background:#2EAFAC;margin:2px auto 0"></div>
           </div>
@@ -279,7 +355,7 @@
           </div>
           <table class="tbl text-[0.9375rem]">
             <thead class="table-header">
-              <tr><th class="cell text-left" style="width:60px">次数</th><th class="cell text-left" style="width:17%">时间</th><th class="cell text-left" style="width:20%">时段</th><th class="cell text-left" style="width:18%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-right" style="width:15%">金额</th><th class="cell text-center" style="width:80px">操作</th></tr>
+              <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:18%">时段</th><th class="cell text-left" style="width:18%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-right" style="width:15%">金额</th><th class="cell text-center" style="width:10%">操作</th></tr>
             </thead>
             <tbody>
               <tr v-for="(c,i) in g.records" :key="c.id" class="border-b border-gray-50">
@@ -306,7 +382,7 @@
         </div>
         <table class="tbl text-[0.9375rem]">
           <thead class="table-header">
-            <tr><th class="cell text-left" style="width:60px">次数</th><th class="cell text-left" style="width:17%">时间</th><th class="cell text-left" style="width:20%">时段</th><th class="cell text-left" style="width:18%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-right" style="width:15%">金额</th><th class="cell text-center" style="width:80px">操作</th></tr>
+            <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:18%">时段</th><th class="cell text-left" style="width:18%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-right" style="width:15%">金额</th><th class="cell text-center" style="width:10%">操作</th></tr>
           </thead>
           <tbody>
             <tr v-for="(c,i) in filteredConsumption" :key="c.id" class="border-b border-gray-50">
@@ -323,8 +399,8 @@
                 <button @click="delConsumption(c)" class="text-accent" title="删除"><i class="fas fa-trash"></i></button>
               </td>
             </tr>
-          </tbody>
-        </table>
+        </tbody>
+      </table>
       </div>
     </div>
 
@@ -358,7 +434,7 @@
     </div>
 
     <!-- 数据备份 -->
-    <div v-if="activeTab!=='projects'" class="card mb-6 mt-8" style="border-top:3px solid #10B981">
+    <div v-if="activeTab!=='projects'" class="card mb-6 mt-8 backup-section" style="border-top:3px solid #10B981">
       <div class="flex items-center justify-between mb-3">
         <div class="flex items-center gap-2">
           <div class="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 text-base">
@@ -372,16 +448,12 @@
         <span class="text-xs text-gray-400 bg-emerald-50 px-3 py-1.5 rounded-full">{{ lastBackup }}</span>
       </div>
       <div class="flex gap-3 flex-wrap">
-        <button @click="exportExcel" class="quick-btn" style="background:linear-gradient(135deg, #D1FAE5, #A7F3D0);color:#065F46;min-width:140px;padding:12px 18px;flex:none;font-size:0.9rem;flex-direction:row;gap:6px">
-          <i class="fas fa-file-excel" style="font-size:1.1rem"></i><span>导出Excel表</span>
+        <button @click="exportExcel" class="py-2.5 px-5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all hover:shadow-lg hover:-translate-y-0.5" style="background:var(--primary-gradient);color:white;box-shadow:0 2px 8px rgba(46,175,172,0.3)">
+          <i class="fas fa-file-excel text-base"></i>导出Excel表格
         </button>
-        <button @click="downloadBackup" class="quick-btn" style="background:linear-gradient(135deg, #E8F0FE, #D0E4FA);color:#1A5DAB;min-width:130px;padding:12px 18px;flex:none;font-size:0.9rem;flex-direction:row;gap:6px">
-          <i class="fas fa-download" style="font-size:1.1rem"></i><span>下载数据库备份</span>
+        <button @click="downloadBackup" class="py-2.5 px-5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all hover:shadow-lg hover:-translate-y-0.5" style="background:#fff;color:#374151;border:1.5px solid #E5E7EB">
+          <i class="fas fa-download text-base" style="color:#6B7280"></i>下载数据库备份
         </button>
-        <button @click="triggerRestore" class="quick-btn" style="background:linear-gradient(135deg, #FDE68A, #FCD34D);color:#92400E;min-width:130px;padding:12px 18px;flex:none;font-size:0.9rem;flex-direction:row;gap:6px">
-          <i class="fas fa-upload" style="font-size:1.1rem"></i><span>导入备份(.db)</span>
-        </button>
-        <input type="file" ref="restoreInput" accept=".db" style="display:none" @change="restoreFromFile">
       </div>
     </div>
 
@@ -456,6 +528,14 @@
     </div>
   </main>
 
+  <!-- App Footer -->
+  <div class="app-footer" style="border-top:1px solid #f0f0f0;margin-top:12px">
+    <div class="max-w-6xl mx-auto px-5 py-3 text-center">
+      <div class="text-xs text-gray-400">悦舒运动康复 · 管理系统</div>
+      <div class="text-xs text-gray-300 mt-1">© 2026 悦舒运动康复中心</div>
+    </div>
+  </div>
+
   <!-- ===== Modal: 新增/编辑预约 ===== -->
   <div v-if="showAptModal" class="modal-overlay" @click.self="showAptModal=false">
     <div class="modal">
@@ -478,7 +558,7 @@
         </div>
         <select v-model="aptForm.project" class="input">
           <option value="">选择项目</option>
-          <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}} (¥{{pr.default_price}})</option>
+          <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}}</option>
           <option value="其他">其他</option>
         </select>
         <div class="grid grid-cols-2 gap-3">
@@ -518,7 +598,7 @@
         <div class="grid grid-cols-2 gap-3">
           <select v-model="conForm.project" class="input">
             <option value="">选择项目</option>
-            <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}} (¥{{pr.default_price}})</option>
+            <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}}</option>
             <option value="其他">其他</option>
           </select>
           <input v-model.number="conForm.amount" type="number" placeholder="输入金额" class="input">
@@ -662,6 +742,17 @@
     {{toast}}
   </div>
 
+  <!-- Mobile Bottom Nav -->
+  <div id="mobile-bottom-nav">
+    <div class="mnav-inner">
+      <button v-for="(t,i) in tabs" :key="'m'+t.id" @click="activeTab = t.id"
+        class="mnav-btn" :class="{ active: activeTab === t.id }"
+        :style="{ color: activeTab === t.id ? tabColors[i] : '#1A3A5C' }">
+        <i :class="t.icon"></i>
+        <span>{{t.name}}</span>
+      </button>
+    </div>
+  </div>
 
 </div>
 
@@ -716,6 +807,7 @@ createApp({
     const appointments = ref([]);
     const showAptModal = ref(false);
     const editingAppointment = ref(null);
+    const hoveredMonth = ref(0);
     const selectedDay = ref(null);
     const selectedDaySorted = computed(() => {
       if (!selectedDay.value) return [];
@@ -725,7 +817,7 @@ createApp({
     const dayTimeSlots = computed(() => {
       if (!selectedDay.value) return [];
       const hours = [];
-      for (let h = 8; h <= 20; h++) {
+      for (let h = 8; h <= 21; h++) {
         const label = h + ':00-' + (h + 1) + ':00';
         const slotAppts = selectedDay.value.appts.filter(a => {
           if (!a.time_slot) return false;
@@ -744,7 +836,7 @@ createApp({
     const aptForm = reactive({ patient_id: '', month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true });
 
     const weekDays = ['一','二','三','四','五','六','日'];
-    const timeSlots = ['8:00-9:00','9:00-10:00','10:00-11:00','11:00-12:00','13:00-14:00','14:00-15:00','15:00-16:00','16:00-17:00','17:00-18:00'];
+    const timeSlots = ['8:00-9:00','9:00-10:00','10:00-11:00','11:00-12:00','12:00-13:00','13:00-14:00','14:00-15:00','15:00-16:00','16:00-17:00','17:00-18:00','18:00-19:00','19:00-20:00','20:00-21:00','21:00-22:00'];
     const maxDay = (month) => [31,29,31,30,31,30,31,31,30,31,30,31][(month||1)-1];
 
     const calendarDays = computed(() => {
@@ -1004,7 +1096,6 @@ const delConsumption = async (con) => {
     };
 
     const lastBackup = ref('');
-    const restoreInput = ref(null);
     const downloadBackup = () => {
       window.location.href = API + '/api/backup';
       const now = new Date();
@@ -1017,36 +1108,6 @@ const delConsumption = async (con) => {
       lastBackup.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
       showToast('Excel表格已导出');
     };
-    const triggerRestore = () => {
-      restoreInput.value?.click();
-    };
-    const restoreFromFile = async (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      if (!confirm(`将从 "${file.name}" 恢复数据库，当前数据将被替换。确定？`)) { e.target.value = ''; return; }
-      const form = new FormData();
-      form.append('file', file);
-      try {
-        const res = await fetch(API + '/api/restore-db', { method: 'POST', body: form });
-        const data = await res.json();
-        if (res.ok) {
-          showToast(data.message);
-          setTimeout(() => location.reload(), 1000);
-        } else {
-          showToast(data.error || '恢复失败');
-        }
-      } catch {
-        showToast('网络错误');
-      }
-      e.target.value = '';
-    };
-    const restoreToExcel = async () => {
-      if (!confirm('将数据库中的预约数据同步到Excel文件，确定？')) return;
-      const res = await fetch(API + '/api/restore', {method: 'GET'});
-      const data = res.ok ? await res.json() : null;
-      showToast(res.ok ? (data?.message || '已从数据库恢复预约到Excel') : '恢复失败');
-    };
-
     const recentAppointments = computed(() => {
       return [...appointments.value].sort((a,b) => (b.month*100 + b.day) - (a.month*100 + a.day)).slice(0, 5);
     });
@@ -1269,7 +1330,7 @@ const delConsumption = async (con) => {
       tabs, tabColors, activeTab, toast,
       patients, projects, loadPatients, showToast, findPatient,
       stats, loadStats, getBarHeight, getBarColor, getMonthTotal, recentAppointments,
-      lastBackup, downloadBackup, exportExcel, restoreToExcel, restoreInput, triggerRestore, restoreFromFile,
+      lastBackup, downloadBackup, exportExcel, hoveredMonth,
       goToApt, goToPatient, goToConsumption, goToProjects,
       aptMonth, showAptModal, editingAppointment, aptForm, editApt,
       weekDays, timeSlots, maxDay, dayStyle, calendarDays, selectedDay, selectedDaySorted, dayTimeSlots, selectDay, prevMonth, nextMonth,
