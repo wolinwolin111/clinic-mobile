@@ -812,7 +812,7 @@ createApp({
     const goToApt = () => { showAptModal.value = true; };
     const editApt = (apt) => {
       editingAppointment.value = apt;
-      Object.assign(aptForm, { patient_id: apt.patient_id, month: apt.month, day: apt.day, time_slot: apt.time_slot || '', project: apt.project, amount: apt.amount, remark: apt.remark || '', sync_to_con: false, is_recharge: apt.recharge_amount > 0, recharge_amount: apt.recharge_amount || 0 });
+      Object.assign(aptForm, { patient_id: apt.patient_id, month: apt.month, day: apt.day, time_slot: apt.time_slot || '', project: apt.project, amount: apt.amount, remark: apt.remark || '', sync_to_con: true, is_recharge: apt.recharge_amount > 0, recharge_amount: apt.recharge_amount || 0 });
       showAptModal.value = true;
     };
     const goToPatient = () => { activeTab.value = 'patients'; nextTick(() => { showPatientModal.value = true; }); };
