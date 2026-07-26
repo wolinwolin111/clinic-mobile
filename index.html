@@ -711,9 +711,7 @@
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.time_slot}}</span></td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
-            <td class="cell text-center">
-              
-              </td>
+            
           </tr>
           <tr v-if="patientApts.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无预约记录</td></tr>
         </tbody>
@@ -724,7 +722,8 @@
           <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:10%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:27%">项目</th><th class="cell text-center" style="width:13%">金额</th><th class="cell text-center" style="width:13%">余额</th></tr>
         </thead>
         <tbody>
-          <tr v-for="c in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedCon?.id === c.id}" @click="toggleSelectCon(c)">
+          <tr v-for="(c, i) in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" @click="toggleSelectCon(c)">
+            <td class="cell text-center font-medium">{{i+1}}</td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
             <td class="cell">
               <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
@@ -732,9 +731,7 @@
             </td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
-            <td class="cell text-center">
-              
-              </td>
+            
           </tr>
           <tr v-if="patientCons.length===0"><td colspan="6" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
