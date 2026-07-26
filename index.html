@@ -395,6 +395,8 @@
       </div>
     </div>
 
+    <div class="flex gap-2 mt-3 mb-4 px-1"><button @click="selectedCon ? editConsumption(selectedCon) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button><button @click="selectedCon ? (delConsumption(selectedCon),selectedCon=null) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button></div>
+
     <!-- ========== 治疗项目管理 ========== -->
     <div v-if="activeTab==='projects'">
       <div class="section-title"><i class="fas fa-flask text-primary"></i>治疗项目管理</div>
