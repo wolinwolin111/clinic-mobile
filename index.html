@@ -252,7 +252,7 @@
           <div class="flex gap-1.5 items-end h-44 pt-2">
             <div v-for="m in 12" :key="m" class="flex-1 flex flex-col items-center cursor-pointer"
                  @mouseenter="hoveredMonth = m" @mouseleave="hoveredMonth = 0">
-              <div v-if="hoveredMonth === m" class="text-xs font-bold mb-1 px-2 py-0.5 rounded-full" style="background:var(--primary);color:white;white-space:nowrap">
+              <div v-if="hoveredMonth === m" class="text-xs font-bold mb-1 px-2 py-1 rounded-full" style="background:var(--primary);color:white;white-space:nowrap">
                 ¥{{getMonthTotal(m).toLocaleString()}}
               </div>
               <div v-else class="mb-1" style="height:20px"></div>
@@ -350,14 +350,14 @@
             <tbody>
               <tr v-for="(c,i) in g.records" :key="c.id" @click="toggleSelectCon(c)" class="border-b border-gray-50 cursor-pointer" :style="selectedCon?.id===c.id ? {background:'#F0EBF8'} : {}">
                 <td class="cell text-center font-medium">{{i+1}}</td>
-                <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{c.month}}.{{c.day}}</span></td>
+                <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{c.month}}.{{c.day}}</span></td>
                 <td class="cell" style="white-space:nowrap">
-                  <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
+                  <span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
                   <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
                 </td>
-                <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.project}}</span></td>
+                <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.project}}</span></td>
                 
-                <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{c.amount}}</span></td>
+                <td class="cell text-center font-medium"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{c.amount}}</span></td>
                 <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, g.records, i)}}</td>
                   
                   
@@ -379,14 +379,14 @@
           <tbody>
             <tr v-for="(c,i) in filteredConsumption" :key="c.id" @click="toggleSelectCon(c)" class="border-b border-gray-50 cursor-pointer" :style="selectedCon?.id===c.id ? {background:'#F0EBF8'} : {}">
               <td class="cell text-center font-medium">{{i+1}}</td>
-              <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{c.month}}.{{c.day}}</span></td>
+              <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{c.month}}.{{c.day}}</span></td>
               <td class="cell">
-                <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
+                <span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
                   <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
               </td>
-              <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.project}}</span></td>
+              <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.project}}</span></td>
               
-              <td class="cell text-center font-bold text-primary-dark"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{c.amount}}</span></td>
+              <td class="cell text-center font-bold text-primary-dark"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{c.amount}}</span></td>
               <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, filteredConsumption, i)}}</td>
                 
                 
@@ -685,7 +685,7 @@
               <template v-if="viewingPatient.age"><i class="fas fa-calendar-alt mr-1"></i>{{viewingPatient.age}}岁 </template>
               <template v-if="viewingPatient.phone"><i class="fas fa-phone mr-1"></i>{{viewingPatient.phone}}</template>
             <div class="text-xs mt-1">
-              <span v-if="viewingPatient.has_recharge" class="inline-block px-2 py-0.5 rounded-full text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">已充值</span>
+              <span v-if="viewingPatient.has_recharge" class="inline-block px-2 py-1 rounded-full text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">已充值</span>
               
             </div>
             </div>
@@ -711,10 +711,10 @@
         <tbody>
           <tr v-for="(a, i) in patientApts" :key="a.id" class="border-b border-gray-50 cursor-pointer" @click="toggleSelectApt(a)" :style="selectedApt?.id===a.id ? {background:'#F0EBF8'} : {}">
             <td class="cell text-center font-medium">{{i+1}}</td>
-            <td class="cell text-left" style="padding-left:8px!important"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{a.month}}.{{a.day}}<span v-if="a.recharge_amount" class="ml-1 px-1 rounded text-xs font-bold" style="background:#FFE0E0;color:#CC0000">+{{a.recharge_amount}}</span></span></td>
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{a.time_slot}}</span></td>
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{a.project}}</span></td>
-            <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{a.amount}}</span></td>
+            <td class="cell text-left" style="padding-left:8px!important"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{a.month}}.{{a.day}}<span v-if="a.recharge_amount" class="ml-1 px-1 rounded text-xs font-bold" style="background:#FFE0E0;color:#CC0000">+{{a.recharge_amount}}</span></span></td>
+            <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{a.time_slot}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{a.project}}</span></td>
+            <td class="cell text-center font-medium"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{a.amount}}</span></td>
             
           </tr>
           <tr v-if="patientApts.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无预约记录</td></tr>
@@ -729,13 +729,13 @@
         <tbody>
           <tr v-for="(c, i) in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" @click="toggleSelectCon(c)" :style="selectedCon?.id===c.id ? {background:'#F0EBF8'} : {}">
             <td class="cell text-center font-medium">{{i+1}}</td>
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{c.month}}.{{c.day}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium border border-[#D5D8DC]">{{c.month}}.{{c.day}}</span></td>
             <td class="cell" style="white-space:nowrap">
-              <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]">{{c.time_slot || '-'}}</span>
+              <span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]">{{c.time_slot || '-'}}</span>
               <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
             </td>
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.project}}</span></td>
-            <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{c.amount}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium border border-[#B8E0DC]" style="white-space:nowrap">{{c.project}}</span></td>
+            <td class="cell text-center font-medium"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold border border-[#F5C0C0]">¥{{c.amount}}</span></td>
             <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, patientCons, i)}}</td>
           </tr>
           <tr v-if="patientCons.length===0"><td colspan="6" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
