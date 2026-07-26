@@ -358,7 +358,7 @@
                 <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
                 
                 <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
-                <td class="cell text-center">
+                <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, g.records, i)}}</td>
                   
                   
                 </td>
@@ -387,7 +387,7 @@
               <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
               
               <td class="cell text-center font-bold text-primary-dark"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
-              <td class="cell text-center">
+              <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, filteredConsumption, i)}}</td>
                 
                 
               </td>
