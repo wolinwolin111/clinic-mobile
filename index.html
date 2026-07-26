@@ -352,9 +352,9 @@
                 <td class="cell font-medium">{{i+1}}</td>
                 <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
                 <td class="cell">
-                  <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{c.time_slot || '-'}}</span>
+                  <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
                 </td>
-                <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{c.project}}</span></td>
+                <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
                 <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{g.patient_name}}</span></td>
                 <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
                 <td class="cell text-center">
@@ -380,9 +380,9 @@
               <td class="cell font-medium">{{i+1}}</td>
               <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
               <td class="cell">
-                <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{c.time_slot || '-'}}</span>
+                <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
               </td>
-              <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{c.project}}</span></td>
+              <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
               <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{c.patient_name}}</span></td>
               <td class="cell text-center font-bold text-primary-dark"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
               <td class="cell text-center">
@@ -701,15 +701,15 @@
         </button>
       </div>
 
-      <table v-if="patientSubTab==='apts'" class="w-full text-[0.75rem]" style="table-layout:fixed">
+      <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:16%">时间</th><th class="cell text-center" style="width:34%">时段</th><th class="cell text-center" style="width:35%">项目</th><th class="cell text-center" style="width:15%">金额</th></tr>
+          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:38%">时段</th><th class="cell text-center" style="width:38%">项目</th><th class="cell text-center" style="width:12%">金额</th></tr>
         </thead>
         <tbody>
           <tr v-for="a in patientApts" :key="a.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedApt?.id === a.id}" @click="toggleSelectApt(a)">
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.month}}.{{a.day}}</span></td>
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{a.time_slot}}</span></td>
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{a.project}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.time_slot}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
             <td class="cell text-center">
               
@@ -719,18 +719,18 @@
         </tbody>
       </table>
 
-      <table v-if="patientSubTab==='cons'" class="w-full text-[0.75rem]" style="table-layout:fixed">
+      <table v-if="patientSubTab==='cons'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:16%">时间</th><th class="cell text-center" style="width:34%">时段</th><th class="cell text-center" style="width:35%">项目</th><th class="cell text-center" style="width:15%">金额</th></tr>
+          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:38%">时段</th><th class="cell text-center" style="width:38%">项目</th><th class="cell text-center" style="width:12%">金额</th></tr>
         </thead>
         <tbody>
           <tr v-for="c in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedCon?.id === c.id}" @click="toggleSelectCon(c)">
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
             <td class="cell">
-              <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{c.time_slot || '-'}}</span>
+              <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
               <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
             </td>
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium truncate" style="max-width:100%;white-space:nowrap">{{c.project}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
             <td class="cell text-center">
               
