@@ -148,6 +148,13 @@
   </nav>
 
   <main class="max-w-6xl mx-auto px-5 py-6">
+    <transition name="fade">
+    <div v-if="selectedCon" class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl px-4 py-3 flex gap-3 z-50 rounded-t-2xl" style="padding-bottom:max(12px,env(safe-area-inset-bottom))">
+      <button @click="editConsumption(selectedCon);selectedCon=null" class="flex-1 py-3 rounded-xl font-bold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button>
+      <button @click="delConsumption(selectedCon);selectedCon=null" class="flex-1 py-3 rounded-xl font-bold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button>
+      <button @click="selectedCon=null" class="px-6 py-3 rounded-xl font-semibold text-sm bg-gray-100 text-gray-600">取消</button>
+    </div>
+    </transition>
     <div v-if="selectedCon || selectedApt" class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg px-5 py-3 flex gap-3 z-50" style="padding-bottom:env(safe-area-inset-bottom,12px)">
       <button v-if="selectedCon" @click="editConsumption(selectedCon)" class="flex-1 py-3 rounded-xl font-semibold text-white" style="background:var(--primary)">编辑</button>
       <button v-if="selectedCon" @click="delConsumption(selectedCon)" class="flex-1 py-3 rounded-xl font-semibold text-white" style="background:var(--accent)">删除</button>
