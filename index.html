@@ -360,7 +360,7 @@
               <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:18%">时段</th><th class="cell text-left" style="width:18%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-right" style="width:15%">金额</th><th class="cell text-center" style="width:10%">操作</th></tr>
             </thead>
             <tbody>
-              <tr v-for="(c,i) in g.records" :key="c.id" class="border-b border-gray-50">
+              <tr v-for="(c,i) in g.records" :key="c.id" @click="toggleSelectCon(c)" :class="['border-b border-gray-50 cursor-pointer', selectedCon?.id===c.id?'bg-primary-light/20':'']">
                 <td class="cell font-medium">{{i+1}}</td>
                 <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
                 <td class="cell">
@@ -388,7 +388,7 @@
             <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:18%">时段</th><th class="cell text-left" style="width:18%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-right" style="width:15%">金额</th><th class="cell text-center" style="width:10%">操作</th></tr>
           </thead>
           <tbody>
-            <tr v-for="(c,i) in filteredConsumption" :key="c.id" class="border-b border-gray-50">
+            <tr v-for="(c,i) in filteredConsumption" :key="c.id" @click="toggleSelectCon(c)" :class="['border-b border-gray-50 cursor-pointer', selectedCon?.id===c.id?'bg-primary-light/20':'']">
               <td class="cell font-medium">{{i+1}}</td>
               <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
               <td class="cell">
