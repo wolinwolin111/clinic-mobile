@@ -148,6 +148,13 @@
   </nav>
 
   <main class="max-w-6xl mx-auto px-5 py-6">
+    <div v-if="selectedCon || selectedApt" class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg px-5 py-3 flex gap-3 z-50" style="padding-bottom:env(safe-area-inset-bottom,12px)">
+      <button v-if="selectedCon" @click="editConsumption(selectedCon)" class="flex-1 py-3 rounded-xl font-semibold text-white" style="background:var(--primary)">编辑</button>
+      <button v-if="selectedCon" @click="delConsumption(selectedCon)" class="flex-1 py-3 rounded-xl font-semibold text-white" style="background:var(--accent)">删除</button>
+      <button v-if="selectedApt" @click="editApt(selectedApt)" class="flex-1 py-3 rounded-xl font-semibold text-white" style="background:var(--primary)">编辑</button>
+      <button v-if="selectedApt" @click="delApt(selectedApt)" class="flex-1 py-3 rounded-xl font-semibold text-white" style="background:var(--accent)">删除</button>
+      <button @click="selectedCon=null;selectedApt=null" class="px-4 py-3 rounded-xl bg-gray-200 text-gray-600">取消</button>
+    </div>
 
     <!-- ========== 首页仪表盘 ========== -->
     <div v-if="activeTab==='dashboard'">
@@ -945,6 +952,8 @@ createApp({
     const consumption = ref([]);
     const conPatientId = ref('');
     const showConModal = ref(false);
+    const selectedCon = ref(null);
+    const selectedApt = ref(null);
     const editingConsumption = ref(null);
 
     const loadConsumption = async () => {
@@ -968,6 +977,7 @@ createApp({
       return Object.values(groups);
     });
 
+    const toggleSelectCon = (c) => { selectedCon.value = selectedCon.value?.id === c.id ? null : c; };
     const editConsumption = (c) => {
       editingConsumption.value = c;
       Object.assign(conForm, { patient_id: c.patient_id, month: c.month, day: c.day, project: c.project, amount: c.amount, time_slot: c.time_slot || '', is_recharge: c.recharge_amount > 0, recharge_amount: c.recharge_amount || 0 });
