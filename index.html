@@ -972,6 +972,7 @@ createApp({
       return Object.values(groups);
     });
 
+    const checkSelect = (sel, msg) => { if (!sel) { showToast(msg || '请先选择一条记录'); return false; } return true; };
     const toggleSelectCon = (c) => { selectedCon.value = selectedCon.value?.id === c.id ? null : c; };
     const toggleSelectApt = (a) => { selectedApt.value = selectedApt.value?.id === a.id ? null : a; };
     const editConsumption = (c) => {
