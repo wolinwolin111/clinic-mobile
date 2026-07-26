@@ -354,7 +354,7 @@
                 </td>
                 <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
                 <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{g.patient_name}}</span></td>
-                <td class="cell text-right font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
+                <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
                 <td class="cell text-center">
                   <button @click="editConsumption(c)" class="text-primary mr-1" title="编辑"><i class="fas fa-edit text-xs"></i></button>
                   <button @click="delConsumption(c)" class="text-accent" title="删除"><i class="fas fa-trash text-xs"></i></button>
@@ -706,7 +706,7 @@
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.month}}.{{a.day}}</span></td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{a.time_slot}}</span></td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{a.project}}</span></td>
-            <td class="cell text-right font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
+            <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
             <td class="cell text-center">
               <button @click="editApt(a)" style="color:var(--primary);border:none;background:none;cursor:pointer;font-size:0.75rem;margin-right:12px" title="编辑"><i class="fas fa-edit"></i></button>
               <button @click="delApt(a)" style="color:var(--accent);border:none;background:none;cursor:pointer;font-size:0.75rem" title="删除"><i class="fas fa-trash"></i></button></td>
@@ -727,7 +727,7 @@
               <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
             </td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
-            <td class="cell text-right font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
+            <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
             <td class="cell text-center">
               <button @click="editConsumption(c)" style="color:var(--primary);border:none;background:none;cursor:pointer;font-size:0.75rem;margin-right:12px" title="编辑"><i class="fas fa-edit"></i></button>
               <button @click="delConsumption(c)" style="color:var(--accent);border:none;background:none;cursor:pointer;font-size:0.75rem" title="删除"><i class="fas fa-trash"></i></button></td>
