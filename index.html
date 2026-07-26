@@ -332,7 +332,7 @@
           </div>
           <button @click="showConModal=true;editingConsumption=null;Object.assign(conForm,{patient_id:'',month:new Date().getMonth()+1,day:1,project:'',amount:0,time_slot:'',sync_to_apt:0,is_recharge:false,recharge_amount:0})" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:auto;padding:8px 12px;font-size:0.8rem;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-plus" style="font-size:1rem"></i><span>新增耗卡</span></button>
 
-          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="position:relative;left:64px">共 {{filteredConsumption.length}} 条</span>
+          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" class="ml-auto">共 {{filteredConsumption.length}} 条</span>
         </div>
       </div>
 
@@ -342,7 +342,7 @@
             <div class="flex items-center gap-2">
               <span class="inline-block px-2 py-1 rounded-full bg-primary-light text-primary-dark text-sm font-semibold link" style="margin-left:4px" @click="viewPatient(findPatient(g.patient_id))">{{g.patient_name}}</span>
             </div>
-            <span class="text-sm font-bold text-primary">合计: ¥{{g.total}}</span>
+            <span class="text-sm font-bold text-primary" style="margin-left:64px">合计: ¥{{g.total}}</span>
           </div>
           <table class="tbl text-[0.6875rem]" style="table-layout:fixed;word-break:break-all">
             <thead class="table-header">
@@ -370,7 +370,7 @@
       </div>
       <div v-else class="card">
         <div class="flex justify-between items-center mb-3">
-          <span class="text-sm font-bold text-primary">合计: ¥{{filteredConsumption.reduce((s,c)=>s+c.amount,0)}}</span>
+          <span class="text-sm font-bold text-primary" style="margin-left:64px">合计: ¥{{filteredConsumption.reduce((s,c)=>s+c.amount,0)}}</span>
           <span v-if="conPatientId" class="text-sm font-bold ml-4" style="color:var(--accent)">余额: ¥{{getPatientBalance(conPatientId)}}</span>
         </div>
         <table class="tbl text-[0.6875rem]" style="table-layout:fixed;word-break:break-all">
@@ -407,7 +407,7 @@
         <div class="flex flex-wrap gap-3 items-center">
           <button @click="showProjectModal=true; editingProject=null; projectForm={name:'',default_price:0}" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-plus"></i><span>新增项目</span></button>
           </button>
-          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="position:relative;left:64px">共 {{projects.length}} 个项目</span>
+          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" class="ml-auto">共 {{projects.length}} 个项目</span>
         </div>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -469,7 +469,7 @@
             <i class="fas fa-search text-gray-300 text-sm"></i>
             <input v-model="patientSearch" placeholder="搜索..." class="border-none bg-transparent text-sm focus:outline-none w-full">
           </div>
-          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="position:relative;left:64px">共 {{filteredPatients.length}} 人</span>
+          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" class="ml-auto">共 {{filteredPatients.length}} 人</span>
         </div>
       </div>
       <div v-for="group in ['不限','男','女']" :key="group">
