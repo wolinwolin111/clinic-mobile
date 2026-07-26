@@ -345,7 +345,7 @@
           </div>
           <table class="tbl text-[0.6875rem]" style="table-layout:fixed;width:100%;word-break:break-all">
             <thead class="table-header">
-              <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:23%">时段</th><th class="cell text-left" style="width:23%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-center" style="width:15%">金额</th></tr>
+              <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:23%">时段</th><th class="cell text-left" style="width:23%">项目</th><th class="cell text-left" style="width:12%">姓名</th><th class="cell text-center" style="width:12%">金额</th><th class="cell text-center" style="width:12%">余额</th></tr>
             </thead>
             <tbody>
               <tr v-for="(c,i) in g.records" :key="c.id" @click="toggleSelectCon(c)" :class="['border-b border-gray-50 cursor-pointer', selectedCon?.id===c.id?'bg-primary-light/20':'']">
@@ -373,7 +373,7 @@
         </div>
         <table class="tbl text-[0.6875rem]" style="table-layout:fixed;width:100%;word-break:break-all">
           <thead class="table-header">
-            <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:23%">时段</th><th class="cell text-left" style="width:23%">项目</th><th class="cell text-left" style="width:15%">姓名</th><th class="cell text-center" style="width:15%">金额</th></tr>
+            <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:16%">时间</th><th class="cell text-left" style="width:23%">时段</th><th class="cell text-left" style="width:23%">项目</th><th class="cell text-left" style="width:12%">姓名</th><th class="cell text-center" style="width:12%">金额</th><th class="cell text-center" style="width:12%">余额</th></tr>
           </thead>
           <tbody>
             <tr v-for="(c,i) in filteredConsumption" :key="c.id" @click="toggleSelectCon(c)" :class="['border-b border-gray-50 cursor-pointer', selectedCon?.id===c.id?'bg-primary-light/20':'']">
@@ -715,7 +715,7 @@
               
               </td>
           </tr>
-          <tr v-if="patientApts.length===0"><td colspan="4" class="text-center text-gray-400 py-8">暂无预约记录</td></tr>
+          <tr v-if="patientApts.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无预约记录</td></tr>
         </tbody>
       </table>
 
@@ -736,7 +736,7 @@
               
               </td>
           </tr>
-          <tr v-if="patientCons.length===0"><td colspan="4" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
+          <tr v-if="patientCons.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
       </table>
 
