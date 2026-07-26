@@ -137,7 +137,7 @@
 <div id="app">
   <!-- Tab Navigation -->
   <nav style="background:#b8f1ed;border-bottom:1px solid rgba(0,0,0,0.06)" class="sticky top-0 z-30 desktop-only">
-    <div class="max-w-6xl mx-auto flex px-5 gap-1">
+    <div class="mx-auto flex px-2 gap-1">
       <button v-for="(t,i) in tabs" :key="t.id" @click="activeTab = t.id"
         class="nav-btn"
         :style="activeTab===t.id ? {background:'rgba(255,255,255,0.95)',color:tabColors[i],borderBottomColor:'transparent'} : {color:'#1A3A5C'}"
@@ -147,7 +147,7 @@
     </div>
   </nav>
 
-  <main class="mx-auto px-3 py-4">
+  <main class="mx-auto px-1 py-3">
 
 
 
@@ -532,7 +532,7 @@
 
   <!-- App Footer -->
   <div class="app-footer" style="border-top:1px solid #f0f0f0;margin-top:12px">
-    <div class="max-w-6xl mx-auto px-5 py-3 text-center">
+    <div class="mx-auto px-2 py-2 text-center">
       <div class="text-xs text-gray-400">悦舒运动康复 · 管理系统</div>
       <div class="text-xs text-gray-300 mt-1">© 2026 悦舒运动康复中心</div>
     </div>
