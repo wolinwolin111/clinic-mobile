@@ -536,7 +536,7 @@
   <div v-if="showAptModal" class="modal-overlay" style="z-index:10000" @click.self="showAptModal=false">
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingAppointment?'编辑':'新增'}}预约</h2>
+        <h2 class="text-base font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingAppointment?'编辑':'新增'}}预约</h2>
         <button @click="showAptModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
       <div class="space-y-4">
@@ -580,7 +580,7 @@
   <div v-if="showConModal" class="modal-overlay" style="z-index:10000" @click.self="showConModal=false">
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingConsumption?'编辑':'新增'}}耗卡</h2>
+        <h2 class="text-base font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingConsumption?'编辑':'新增'}}耗卡</h2>
         <button @click="showConModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
       <div class="space-y-4">
@@ -697,9 +697,9 @@
         </button>
       </div>
 
-      <table v-if="patientSubTab==='apts'" class="w-full text-[0.9375rem]">
+      <table v-if="patientSubTab==='apts'" class="w-full text-[0.75rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-left">时间</th><th class="cell text-left">时段</th><th class="cell text-left">项目</th><th class="cell text-right">金额</th><th class="cell text-center" style="width:70px">操作</th></tr>
+          <tr><th class="cell text-center" style="width:16%">时间</th><th class="cell text-center" style="width:24%">时段</th><th class="cell text-center" style="width:24%">项目</th><th class="cell text-center" style="width:18%">金额</th><th class="cell text-center" style="width:18%">操作</th></tr>
         </thead>
         <tbody>
           <tr v-for="a in patientApts" :key="a.id" class="border-b border-gray-50">
@@ -715,9 +715,9 @@
         </tbody>
       </table>
 
-      <table v-if="patientSubTab==='cons'" class="w-full text-[0.9375rem]">
+      <table v-if="patientSubTab==='cons'" class="w-full text-[0.75rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-left">时间</th><th class="cell text-left">时段</th><th class="cell text-left">项目</th><th class="cell text-right">金额</th><th class="cell text-center" style="width:70px">操作</th></tr>
+          <tr><th class="cell text-center" style="width:16%">时间</th><th class="cell text-center" style="width:24%">时段</th><th class="cell text-center" style="width:24%">项目</th><th class="cell text-center" style="width:18%">金额</th><th class="cell text-center" style="width:18%">操作</th></tr>
         </thead>
         <tbody>
           <tr v-for="c in patientCons" :key="c.id" class="border-b border-gray-50">
