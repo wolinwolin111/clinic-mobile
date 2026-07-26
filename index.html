@@ -699,7 +699,7 @@
           <i :class="st.icon" class="mr-1"></i>{{st.name}}
           <span class="text-xs ml-1 text-gray-400">({{st.count}})</span>
         </button>
-        <span v-if="viewingPatient.balance > 0" class="inline-flex items-center px-2 py-0 rounded-full text-[0.55rem] font-semibold ml-auto leading-none" style="background:#FFF0F0;color:var(--accent);border:1px solid var(--accent-light)">当前余额 ¥{{viewingPatient.balance}}</span>
+        <span v-if="viewingPatient.balance > 0" class="text-[0.65rem] font-bold ml-auto" style="color:var(--accent)">当前余额 ¥{{viewingPatient.balance}}</span>
       </div>
 
       <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
