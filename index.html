@@ -703,7 +703,7 @@
 
       <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:38%">时段</th><th class="cell text-center" style="width:38%">项目</th><th class="cell text-center" style="width:14%">金额</th></tr>
+          <tr><th class="cell text-center" style="width:8%">次数</th><th class="cell text-center" style="width:10%">时间</th><th class="cell text-center" style="width:31%">时段</th><th class="cell text-center" style="width:31%">项目</th><th class="cell text-center" style="width:20%">金额</th></tr>
         </thead>
         <tbody>
           <tr v-for="a in patientApts" :key="a.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedApt?.id === a.id}" @click="toggleSelectApt(a)">
@@ -721,7 +721,7 @@
 
       <table v-if="patientSubTab==='cons'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:32%">时段</th><th class="cell text-center" style="width:32%">项目</th><th class="cell text-center" style="width:14%">金额</th><th class="cell text-center" style="width:12%">余额</th></tr>
+          <tr><th class="cell text-center" style="width:8%">次数</th><th class="cell text-center" style="width:10%">时间</th><th class="cell text-center" style="width:28%">时段</th><th class="cell text-center" style="width:28%">项目</th><th class="cell text-center" style="width:13%">金额</th><th class="cell text-center" style="width:13%">余额</th></tr>
         </thead>
         <tbody>
           <tr v-for="c in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedCon?.id === c.id}" @click="toggleSelectCon(c)">
@@ -736,7 +736,7 @@
               
               </td>
           </tr>
-          <tr v-if="patientCons.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
+          <tr v-if="patientCons.length===0"><td colspan="6" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
       </table>
 
