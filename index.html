@@ -332,7 +332,7 @@
           </div>
           <button @click="showConModal=true;editingConsumption=null;Object.assign(conForm,{patient_id:'',month:new Date().getMonth()+1,day:1,project:'',amount:0,time_slot:'',sync_to_apt:0,is_recharge:false,recharge_amount:0})" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:auto;padding:8px 12px;font-size:0.8rem;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-plus" style="font-size:1rem"></i><span>新增耗卡</span></button>
 
-          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="margin-right:64px">共 {{filteredConsumption.length}} 条</span>
+          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="margin-left:auto;margin-right:64px">共 {{filteredConsumption.length}} 条</span>
         </div>
       </div>
 
@@ -407,7 +407,7 @@
         <div class="flex flex-wrap gap-3 items-center">
           <button @click="showProjectModal=true; editingProject=null; projectForm={name:'',default_price:0}" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-plus"></i><span>新增项目</span></button>
           </button>
-          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="margin-right:64px">共 {{projects.length}} 个项目</span>
+          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="margin-left:auto;margin-right:64px">共 {{projects.length}} 个项目</span>
         </div>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -469,7 +469,7 @@
             <i class="fas fa-search text-gray-300 text-sm"></i>
             <input v-model="patientSearch" placeholder="搜索..." class="border-none bg-transparent text-sm focus:outline-none w-full">
           </div>
-          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="margin-right:64px">共 {{filteredPatients.length}} 人</span>
+          <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full" style="margin-left:auto;margin-right:64px">共 {{filteredPatients.length}} 人</span>
         </div>
       </div>
       <div v-for="group in ['不限','男','女']" :key="group">
