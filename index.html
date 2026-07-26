@@ -689,7 +689,7 @@
             </div>
           </div>
         </div>
-        <button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        <span v-if="viewingPatient.balance > 0" class="inline-flex items-center px-1.5 py-0.5 rounded-full text-sm font-bold" style="background:#FFF0F0;color:var(--accent);border:2px solid var(--accent-light);margin-right:8px">当前余额 ¥{{viewingPatient.balance}}</span><button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
 
       <div class="flex border-b gap-1 mb-4">
@@ -707,7 +707,7 @@
         </thead>
         <tbody>
           <tr v-for="a in patientApts" :key="a.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedApt?.id === a.id}" @click="toggleSelectApt(a)">
-            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.month}}.{{a.day}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.month}}.{{a.day}}<span v-if="a.recharge_amount" class="ml-1 px-1 rounded text-xs font-bold" style="background:#FFE0E0;color:#CC0000">+{{a.recharge_amount}}</span></span></td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.time_slot}}</span></td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
