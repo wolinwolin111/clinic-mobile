@@ -348,12 +348,12 @@
             <tbody>
               <tr v-for="(c,i) in g.records" :key="c.id" class="border-b border-gray-50">
                 <td class="cell font-medium">{{i+1}}</td>
-                <td class="cell"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
+                <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
                 <td class="cell">
                   <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.time_slot || '-'}}</span>
                 </td>
-                <td class="cell"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
-                <td class="cell"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{g.patient_name}}</span></td>
+                <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
+                <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{g.patient_name}}</span></td>
                 <td class="cell text-right font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
                 <td class="cell text-center">
                   <button @click="editConsumption(c)" class="text-primary mr-1" title="编辑"><i class="fas fa-edit text-xs"></i></button>
@@ -376,12 +376,12 @@
           <tbody>
             <tr v-for="(c,i) in filteredConsumption" :key="c.id" class="border-b border-gray-50">
               <td class="cell font-medium">{{i+1}}</td>
-              <td class="cell"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
+              <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
               <td class="cell">
                 <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.time_slot || '-'}}</span>
               </td>
-              <td class="cell"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
-              <td class="cell"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{c.patient_name}}</span></td>
+              <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
+              <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{c.patient_name}}</span></td>
               <td class="cell text-right font-bold text-primary-dark"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
               <td class="cell text-center">
                 <button @click="editConsumption(c)" class="text-primary mr-1" title="编辑"><i class="fas fa-edit"></i></button>
@@ -703,9 +703,9 @@
         </thead>
         <tbody>
           <tr v-for="a in patientApts" :key="a.id" class="border-b border-gray-50">
-            <td class="cell"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.month}}.{{a.day}}</span></td>
-            <td class="cell"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{a.time_slot}}</span></td>
-            <td class="cell"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{a.project}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.month}}.{{a.day}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{a.time_slot}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{a.project}}</span></td>
             <td class="cell text-right font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
             <td class="cell text-center">
               <button @click="editApt(a)" style="color:var(--primary);border:none;background:none;cursor:pointer;font-size:0.75rem;margin-right:12px" title="编辑"><i class="fas fa-edit"></i></button>
@@ -721,12 +721,12 @@
         </thead>
         <tbody>
           <tr v-for="c in patientCons" :key="c.id" class="border-b border-gray-50">
-            <td class="cell"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
             <td class="cell">
               <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.time_slot || '-'}}</span>
               <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
             </td>
-            <td class="cell"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
             <td class="cell text-right font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
             <td class="cell text-center">
               <button @click="editConsumption(c)" style="color:var(--primary);border:none;background:none;cursor:pointer;font-size:0.75rem;margin-right:12px" title="编辑"><i class="fas fa-edit"></i></button>
