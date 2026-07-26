@@ -978,6 +978,7 @@ createApp({
     });
 
     const toggleSelectCon = (c) => { selectedCon.value = selectedCon.value?.id === c.id ? null : c; };
+    const toggleSelectApt = (a) => { selectedApt.value = selectedApt.value?.id === a.id ? null : a; };
     const editConsumption = (c) => {
       editingConsumption.value = c;
       Object.assign(conForm, { patient_id: c.patient_id, month: c.month, day: c.day, project: c.project, amount: c.amount, time_slot: c.time_slot || '', is_recharge: c.recharge_amount > 0, recharge_amount: c.recharge_amount || 0 });
