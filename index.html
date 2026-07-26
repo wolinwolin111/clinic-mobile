@@ -689,7 +689,7 @@
             </div>
           </div>
         </div>
-        <span v-if="viewingPatient.balance > 0" class="inline-flex items-center px-1.5 py-0.5 rounded-full text-sm font-bold" style="background:#FFF0F0;color:var(--accent);border:2px solid var(--accent-light);margin-right:8px">当前余额 ¥{{viewingPatient.balance}}</span><span v-if="viewingPatient.balance > 0" class="inline-flex items-center px-1.5 py-0.5 rounded-full text-sm font-bold" style="background:#FFF0F0;color:var(--accent);border:2px solid var(--accent-light);margin-right:8px">当前余额 ¥{{viewingPatient.balance}}</span><button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        <button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
 
       <div class="flex border-b gap-1 mb-4">
@@ -699,6 +699,7 @@
           <i :class="st.icon" class="mr-1"></i>{{st.name}}
           <span class="text-xs ml-1 text-gray-400">({{st.count}})</span>
         </button>
+        <span v-if="viewingPatient.balance > 0" class="inline-flex items-center px-1.5 py-0.5 rounded-full text-sm font-bold ml-auto" style="background:#FFF0F0;color:var(--accent);border:2px solid var(--accent-light)">当前余额 ¥{{viewingPatient.balance}}</span>
       </div>
 
       <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
