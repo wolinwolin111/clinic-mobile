@@ -483,7 +483,7 @@
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-2xl bg-primary-light flex items-center justify-center text-sm font-bold text-primary-dark">
                     {{p.name?.[0] || '?'}}
-            <div v-if="p.balance" class="text-xs font-bold px-2 py-0.5 rounded-full" style="background:var(--accent-light);color:var(--accent)">余额 ¥{{p.balance}}</div>
+            
                   </div>
                   <div>
                     <h3 class="font-semibold link" style="color:var(--primary-dark)" @click="viewPatient(p)">{{p.name}}</h3>
@@ -684,7 +684,7 @@
               <template v-if="viewingPatient.phone"><i class="fas fa-phone mr-1"></i>{{viewingPatient.phone}}</template>
             <div class="text-xs mt-1">
               <span v-if="viewingPatient.has_recharge" class="inline-block px-2 py-0.5 rounded-full text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">已充值</span>
-              <span class="ml-2 font-bold" style="color:var(--primary-dark)">余额 ¥{{viewingPatient.balance || 0}}</span>
+              
             </div>
             </div>
           </div>
@@ -704,7 +704,7 @@
 
       <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:10%">时间</th><th class="cell text-center" style="width:30%">时段</th><th class="cell text-center" style="width:30%">项目</th><th class="cell text-center" style="width:20%">金额</th></tr>
+          <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:10%">时间</th><th class="cell text-center" style="width:28%">时段</th><th class="cell text-center" style="width:28%">项目</th><th class="cell text-center" style="width:22%">金额</th></tr>
         </thead>
         <tbody>
           <tr v-for="(a, i) in patientApts" :key="a.id" class="border-b border-gray-50 cursor-pointer" @click="toggleSelectApt(a)">
