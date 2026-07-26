@@ -699,7 +699,7 @@
           <i :class="st.icon" class="mr-1"></i>{{st.name}}
           <span class="text-xs ml-1 text-gray-400">({{st.count}})</span>
         </button>
-        <span v-if="viewingPatient.balance > 0" class="inline-flex items-center px-1.5 py-0 rounded-full text-[0.5rem] font-bold ml-auto" style="color:var(--accent);border:1px solid var(--accent-light);background:#FFF5F5">当前余额 ¥{{viewingPatient.balance}}</span>
+        <span v-if="viewingPatient.balance > 0" class="inline-flex items-center px-1.5 py-0 rounded-full text-[0.65rem] font-bold ml-auto" style="color:var(--accent);border:1px solid var(--accent-light);background:#FFF5F5">当前余额 ¥{{viewingPatient.balance}}</span>
       </div>
 
       <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
@@ -734,7 +734,7 @@
             </td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
-            <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalance(c.patient_id)}}</td>
+            <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, g.records || filteredConsumption, i)}}</td>
           </tr>
           <tr v-if="patientCons.length===0"><td colspan="6" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
@@ -803,6 +803,7 @@ createApp({
       setTimeout(() => toast.value = '', 2000);
     };
     const findPatient = (id) => patients.value.find(p => p.id === id);
+    const getPatientBalAfterCon = (pid, records, idx) => { let bal = getPatientBalance(pid); if (records && idx != null) { for (let i = idx + 1; i < records.length; i++) { bal += (records[i].amount || 0) - (records[i].recharge_amount || 0); } } return Math.max(0, bal); };
     const getPatientBalance = (id) => { const p = findPatient(Number(id)); return p ? (p.balance || 0) : 0; };
 
     const goToApt = () => { showAptModal.value = true; };
@@ -1366,7 +1367,7 @@ const delConsumption = async (con) => {
       editProject, saveProject, deleteProject,
       patientSearch, filterRecharge, showPatientModal, editingPatient, patientForm,
       filteredPatients, groupedPatients, editPatient, savePatient, deletePatient,
-      viewingPatient, patientSubTab, patientApts, patientCons, patientSubTabs, getPatientBalance,
+      viewingPatient, patientSubTab, patientApts, patientCons, patientSubTabs, getPatientBalAfterCon, getPatientBalance,
       viewPatient, addAptForPatient, addConForPatient,
       
       historyList, toBeijingTime, loadHistory, restoreHistory,
