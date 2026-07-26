@@ -727,8 +727,9 @@
           <tr v-for="(c, i) in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" @click="toggleSelectCon(c)">
             <td class="cell text-center font-medium">{{i+1}}</td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
-            <td class="cell">
-              <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.time_slot || '-'}}<i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i></span>
+            <td class="cell" style="white-space:nowrap">
+              <span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.time_slot || '-'}}</span>
+              <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
             </td>
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
