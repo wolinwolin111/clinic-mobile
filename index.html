@@ -717,7 +717,7 @@
           <tr v-if="patientApts.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无预约记录</td></tr>
         </tbody>
       </table>
-      <div class="flex gap-2 mt-3 mb-4 px-1"><button @click="selectedApt ? editApt(selectedApt) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button><button @click="selectedApt ? (delApt(selectedApt),selectedApt=null) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button></div>
+      <div v-if="patientSubTab==='apts'" class="flex gap-2 mt-3 mb-4 px-1"><button @click="selectedApt ? editApt(selectedApt) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button><button @click="selectedApt ? (delApt(selectedApt),selectedApt=null) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button></div>
 
       <table v-if="patientSubTab==='cons'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
@@ -738,7 +738,7 @@
           <tr v-if="patientCons.length===0"><td colspan="6" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
       </table>
-      <div class="flex gap-2 mt-3 mb-4 px-1"><button @click="selectedCon ? editConsumption(selectedCon) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button><button @click="selectedCon ? (delConsumption(selectedCon),selectedCon=null) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button></div>
+      <div v-if="patientSubTab==='cons'" class="flex gap-2 mt-3 mb-4 px-1"><button @click="selectedCon ? editConsumption(selectedCon) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button><button @click="selectedCon ? (delConsumption(selectedCon),selectedCon=null) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button></div>
 
       <div class="flex gap-3 mt-6">
         <button @click="addAptForPatient(viewingPatient.id)" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-calendar-plus"></i><span>添加预约</span></button>
