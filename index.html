@@ -303,7 +303,7 @@
         <div class="modal" style="max-width:600px">
           <div class="flex justify-between items-center mb-5">
             <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{aptMonth}}月{{selectedDay.day}}日 时间表</h2>
-            <button @click="selectedDay=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
+            <button @click="selectedDay=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
           </div>
           <div v-for="slot in dayTimeSlots" :key="slot.label" style="display:flex;border-bottom:1px solid #f5f5f5;min-height:48px">
             <div style="width:110px;flex-shrink:0;padding:10px 8px;font-size:0.8rem;font-weight:600;color:#888;text-align:center;border-right:1px solid #f0f0f0;background:#fafafa;white-space:nowrap">{{slot.label}}</div>
@@ -544,7 +544,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-base font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingAppointment?'编辑':'新增'}}预约</h2>
-        <button @click="showAptModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
+        <button @click="showAptModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
       <div class="space-y-4">
         <select v-model="aptForm.patient_id" class="input">
@@ -588,7 +588,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-base font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingConsumption?'编辑':'新增'}}耗卡</h2>
-        <button @click="showConModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
+        <button @click="showConModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
       <div class="space-y-4">
         <select v-model="conForm.patient_id" class="input">
@@ -629,7 +629,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingPatient?'编辑':'新增'}}患者</h2>
-        <button @click="showPatientModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
+        <button @click="showPatientModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
       <div class="space-y-4">
         <input v-model="patientForm.name" placeholder="姓名" class="input">
@@ -661,7 +661,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingProject?'编辑':'新增'}}治疗项目</h2>
-        <button @click="showProjectModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
+        <button @click="showProjectModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
       <div class="space-y-4">
         <input v-model="projectForm.name" placeholder="项目名称" class="input">
@@ -692,7 +692,7 @@
             </div>
           </div>
         </div>
-        <button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
+        <button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
       </div>
 
       <div class="flex border-b gap-1 mb-4">
