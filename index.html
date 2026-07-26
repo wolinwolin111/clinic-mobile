@@ -345,7 +345,7 @@
           </div>
           <table class="tbl text-[0.6875rem]" style="table-layout:fixed;width:100%;word-break:break-all">
             <thead class="table-header">
-              <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:20%">时间</th><th class="cell text-left" style="width:28%">时段</th><th class="cell text-left" style="width:28%">项目</th><th class="cell text-center" style="width:16%">金额</th><th class="cell text-center" style="width:12%">余额</th></tr>
+              <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:18%">时间</th><th class="cell text-left" style="width:26%">时段</th><th class="cell text-left" style="width:26%">项目</th><th class="cell text-center" style="width:12%">金额</th><th class="cell text-center" style="width:10%">余额</th></tr>
             </thead>
             <tbody>
               <tr v-for="(c,i) in g.records" :key="c.id" @click="toggleSelectCon(c)" :class="['border-b border-gray-50 cursor-pointer', selectedCon?.id===c.id?'bg-primary-light/20':'']">
@@ -373,7 +373,7 @@
         </div>
         <table class="tbl text-[0.6875rem]" style="table-layout:fixed;width:100%;word-break:break-all">
           <thead class="table-header">
-            <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:20%">时间</th><th class="cell text-left" style="width:28%">时段</th><th class="cell text-left" style="width:28%">项目</th><th class="cell text-center" style="width:16%">金额</th><th class="cell text-center" style="width:12%">余额</th></tr>
+            <tr><th class="cell text-left" style="width:8%">次数</th><th class="cell text-left" style="width:18%">时间</th><th class="cell text-left" style="width:26%">时段</th><th class="cell text-left" style="width:26%">项目</th><th class="cell text-center" style="width:12%">金额</th><th class="cell text-center" style="width:10%">余额</th></tr>
           </thead>
           <tbody>
             <tr v-for="(c,i) in filteredConsumption" :key="c.id" @click="toggleSelectCon(c)" :class="['border-b border-gray-50 cursor-pointer', selectedCon?.id===c.id?'bg-primary-light/20':'']">
@@ -703,7 +703,7 @@
 
       <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:38%">时段</th><th class="cell text-center" style="width:38%">项目</th><th class="cell text-center" style="width:16%">金额</th></tr>
+          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:38%">时段</th><th class="cell text-center" style="width:38%">项目</th><th class="cell text-center" style="width:12%">金额</th></tr>
         </thead>
         <tbody>
           <tr v-for="a in patientApts" :key="a.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedApt?.id === a.id}" @click="toggleSelectApt(a)">
@@ -721,7 +721,7 @@
 
       <table v-if="patientSubTab==='cons'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:32%">时段</th><th class="cell text-center" style="width:32%">项目</th><th class="cell text-center" style="width:16%">金额</th><th class="cell text-center" style="width:12%">余额</th></tr>
+          <tr><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:32%">时段</th><th class="cell text-center" style="width:32%">项目</th><th class="cell text-center" style="width:12%">金额</th><th class="cell text-center" style="width:10%">余额</th></tr>
         </thead>
         <tbody>
           <tr v-for="c in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" :class="{'bg-primary-light/20': selectedCon?.id === c.id}" @click="toggleSelectCon(c)">
