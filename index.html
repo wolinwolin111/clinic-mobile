@@ -303,7 +303,7 @@
         <div class="modal" style="max-width:600px">
           <div class="flex justify-between items-center mb-5">
             <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{aptMonth}}月{{selectedDay.day}}日 时间表</h2>
-            <button @click="selectedDay=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            <button @click="selectedDay=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
           </div>
           <div v-for="slot in dayTimeSlots" :key="slot.label" style="display:flex;border-bottom:1px solid #f5f5f5;min-height:48px">
             <div style="width:110px;flex-shrink:0;padding:10px 8px;font-size:0.8rem;font-weight:600;color:#888;text-align:center;border-right:1px solid #f0f0f0;background:#fafafa;white-space:nowrap">{{slot.label}}</div>
@@ -312,8 +312,8 @@
                 <span style="display:inline-block;background:var(--primary-light);color:var(--primary-dark);font-weight:600;font-size:0.8rem;padding:3px 10px;border-radius:6px">{{a.patient_name}}</span>
                 <span style="display:inline-block;background:var(--yellow);color:var(--yellow-dark);font-weight:600;font-size:0.75rem;padding:2px 8px;border-radius:6px">{{a.project}}</span>
                 <span style="font-size:0.8rem;font-weight:700;color:var(--primary-dark)">¥{{a.amount}}</span>
-                <button @click.stop="editApt(a)" style="color:var(--primary);font-size:0.75rem;padding:2px 4px;border:none;background:none;cursor:pointer;opacity:0.5" title="编辑"><i class="fas fa-edit"></i></button>
-                <button @click.stop="delApt(a)" style="color:var(--accent);font-size:0.75rem;padding:2px 4px;border:none;background:none;cursor:pointer;opacity:0.5" title="删除"><i class="fas fa-times"></i></button>
+                
+                
               </div>
               <div v-if="slot.appts.length===0" style="font-size:0.75rem;color:#ccc">空闲</div>
             </div>
@@ -363,8 +363,8 @@
                 <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{g.patient_name}}</span></td>
                 <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
                 <td class="cell text-center">
-                  <button @click="editConsumption(c)" class="text-primary mr-1" title="编辑"><i class="fas fa-edit text-xs"></i></button>
-                  <button @click="delConsumption(c)" class="text-accent" title="删除"><i class="fas fa-trash text-xs"></i></button>
+                  
+                  
                 </td>
               </tr>
         </tbody>
@@ -391,8 +391,8 @@
               <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-semibold">{{c.patient_name}}</span></td>
               <td class="cell text-center font-bold text-primary-dark"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
               <td class="cell text-center">
-                <button @click="editConsumption(c)" class="text-primary mr-1" title="编辑"><i class="fas fa-edit"></i></button>
-                <button @click="delConsumption(c)" class="text-accent" title="删除"><i class="fas fa-trash"></i></button>
+                
+                
               </td>
             </tr>
         </tbody>
@@ -421,8 +421,8 @@
               <div class="text-lg font-bold text-primary-dark mt-1">¥{{p.default_price}}</div>
             </div>
             <div class="flex gap-2">
-              <button @click="editProject(p)" class="w-7 h-7 rounded-full bg-warm flex items-center justify-center text-gray-500 hover-text-primary transition-colors" title="编辑"><i class="fas fa-edit text-xs"></i></button>
-              <button @click="deleteProject(p.id)" class="w-7 h-7 rounded-full flex items-center justify-center text-accent hover-text-accent transition-colors" title="删除" style="background:rgba(255,107,107,0.15)"><i class="fas fa-trash text-xs"></i></button>
+              
+              <button @click="deleteProject(p.id)" class="w-7 h-7 rounded-full flex items-center justify-center text-accent hover-text-accent transition-colors" title="删除" style="background:rgba(255,107,107,0.15)"></button>
             </div>
           </div>
         </div>
@@ -495,7 +495,7 @@
               </div>
               <div class="flex gap-2 pt-3 border-t border-gray-50">
                 <button @click="viewPatient(p)" class="flex-1 text-xs py-1.5 rounded-full bg-primary-light text-primary-dark font-medium transition-colors hover:bg-primary hover:text-white">查看</button>
-                <button @click="editPatient(p)" class="flex-1 text-xs py-1.5 rounded-full bg-warm text-gray-600 font-medium transition-colors hover:bg-gray-200">编辑</button>
+                
                 <button @click="deletePatient(p)" class="flex-1 text-xs py-1.5 rounded-full text-accent font-medium transition-colors hover:bg-accent hover:text-white" style="background:rgba(255,107,107,0.15)">删除</button>
               </div>
             </div>
@@ -544,7 +544,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-base font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingAppointment?'编辑':'新增'}}预约</h2>
-        <button @click="showAptModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        <button @click="showAptModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
       </div>
       <div class="space-y-4">
         <select v-model="aptForm.patient_id" class="input">
@@ -588,7 +588,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-base font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingConsumption?'编辑':'新增'}}耗卡</h2>
-        <button @click="showConModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        <button @click="showConModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
       </div>
       <div class="space-y-4">
         <select v-model="conForm.patient_id" class="input">
@@ -629,7 +629,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingPatient?'编辑':'新增'}}患者</h2>
-        <button @click="showPatientModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        <button @click="showPatientModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
       </div>
       <div class="space-y-4">
         <input v-model="patientForm.name" placeholder="姓名" class="input">
@@ -661,7 +661,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingProject?'编辑':'新增'}}治疗项目</h2>
-        <button @click="showProjectModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        <button @click="showProjectModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
       </div>
       <div class="space-y-4">
         <input v-model="projectForm.name" placeholder="项目名称" class="input">
@@ -692,7 +692,7 @@
             </div>
           </div>
         </div>
-        <button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        <button @click="viewingPatient=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"></button>
       </div>
 
       <div class="flex border-b gap-1 mb-4">
@@ -715,8 +715,8 @@
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{a.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
             <td class="cell text-center">
-              <button @click="editApt(a)" style="color:var(--primary);border:none;background:none;cursor:pointer;font-size:0.75rem;margin-right:12px" title="编辑"><i class="fas fa-edit"></i></button>
-              <button @click="delApt(a)" style="color:var(--accent);border:none;background:none;cursor:pointer;font-size:0.75rem" title="删除"><i class="fas fa-trash"></i></button></td>
+              
+              </td>
           </tr>
           <tr v-if="patientApts.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无预约记录</td></tr>
         </tbody>
@@ -736,8 +736,8 @@
             <td class="cell text-center"><span class="inline-block py-0.5 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.project}}</span></td>
             <td class="cell text-center font-medium"><span class="inline-block py-0.5 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
             <td class="cell text-center">
-              <button @click="editConsumption(c)" style="color:var(--primary);border:none;background:none;cursor:pointer;font-size:0.75rem;margin-right:12px" title="编辑"><i class="fas fa-edit"></i></button>
-              <button @click="delConsumption(c)" style="color:var(--accent);border:none;background:none;cursor:pointer;font-size:0.75rem" title="删除"><i class="fas fa-trash"></i></button></td>
+              
+              </td>
           </tr>
           <tr v-if="patientCons.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
@@ -746,7 +746,7 @@
       <div class="flex gap-3 mt-6">
         <button @click="addAptForPatient(viewingPatient.id)" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-calendar-plus"></i><span>添加预约</span></button>
         <button @click="addConForPatient(viewingPatient.id)" class="quick-btn" style="background:linear-gradient(135deg, var(--mint), #D0F5E5);color:var(--primary-dark);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-plus"></i><span>添加耗卡</span></button>
-        <button @click="delPatient(viewingPatient)" class="quick-btn" style="background:linear-gradient(135deg, #FEE2E2, #FECACA);color:#B91C1C;min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-trash"></i><span>删除患者</span></button>
+        <button @click="delPatient(viewingPatient)" class="quick-btn" style="background:linear-gradient(135deg, #FEE2E2, #FECACA);color:#B91C1C;min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><span>删除患者</span></button>
         <button @click="viewingPatient=null" class="quick-btn" style="background:var(--warm-gray);color:var(--text-secondary);min-width:80px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px;margin-left:auto"><span>关闭</span></button>
       </div>
     </div>
