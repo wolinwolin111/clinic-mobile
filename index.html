@@ -662,7 +662,7 @@
           <i :class="st.icon" class="mr-1"></i>{{st.name}}
           <span class="text-xs ml-1 text-gray-400">({{st.count}})</span>
         </button>
-        <span v-if="getPatientBalance(viewingPatient.id) > 0" class="inline-flex flex-col items-center justify-center px-2 py-1 rounded-full text-xs font-bold ml-auto text-center" style="color:var(--accent);border:1px solid var(--accent-light);background:#FFF5F5;max-width:72px">耗卡合计<br>¥{{getPatientBalance(viewingPatient.id)}}</span>
+        <span v-if="patientCons.length > 0" class="inline-flex flex-col items-center justify-center px-2 py-1 rounded-full text-xs font-bold ml-auto text-center" style="color:var(--accent);border:1px solid var(--accent-light);background:#FFF5F5;max-width:72px">耗卡合计<br>¥{{patientCons.reduce((s,c)=>s+c.amount,0)}}</span>
       </div>
 
       <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
