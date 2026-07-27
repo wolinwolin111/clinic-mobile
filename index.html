@@ -1025,6 +1025,8 @@ createApp({
 
     const reloadPatientRecords = async () => {
       if (!viewingPatient.value) return;
+      const updated = findPatient(viewingPatient.value.id);
+      if (updated) viewingPatient.value = updated;
       const [aptsRes, consRes] = await Promise.all([
         fetch(API + '/api/appointments?patient_id=' + viewingPatient.value.id),
         fetch(API + '/api/consumption?patient_id=' + viewingPatient.value.id)
