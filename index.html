@@ -346,7 +346,10 @@
         <div v-for="g in groupedConsumption" :key="g.patient_id" class="card">
           <div class="flex justify-between items-center mb-3">
             <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1.5">
               <span class="inline-block px-2 py-1 rounded-full bg-primary-light text-primary-dark text-sm font-semibold link" style="margin-left:4px" @click="viewPatient(findPatient(g.patient_id))">{{g.patient_name}}</span>
+              <span v-if="findPatient(g.patient_id)?.has_recharge" class="inline-block px-1.5 py-0.5 rounded-full text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">已充值</span>
+            </div>
             </div>
             <span class="text-sm font-bold text-primary" style="margin-right:10px">合计: ¥{{g.total}}</span>
           </div>
@@ -373,8 +376,11 @@
       </div>
       <div v-else class="card">
         <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center gap-2">
+            <span class="inline-block px-3 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-semibold">{{findPatient(conPatientId)?.name || ''}}</span>
+            <span v-if="findPatient(conPatientId)?.has_recharge" class="inline-block px-2 py-1 rounded-full text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">已充值</span>
+          </div>
           <span class="text-sm font-bold text-primary" style="margin-right:10px">合计: ¥{{filteredConsumption.reduce((s,c)=>s+c.amount,0)}}</span>
-          <span v-if="conPatientId" class="text-sm font-bold ml-4" style="color:var(--accent)">余额: ¥{{getPatientBalance(conPatientId)}}</span>
         </div>
         <table class="tbl text-[0.6875rem]" style="table-layout:fixed;word-break:break-all">
           <thead class="table-header">
