@@ -336,7 +336,7 @@
               <option v-for="p in patients" :key="p.id" :value="p.id">{{p.name}}</option>
             </select>
           </div>
-          <button @click="showConModal=true;editingConsumption=null;Object.assign(conForm,{patient_id:'',month:new Date().getMonth()+1,day:1,project:'',amount:0,time_slot:'',sync_to_apt:0,is_recharge:false,recharge_amount:0})" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:auto;padding:8px 12px;font-size:0.8rem;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-plus" style="font-size:1rem"></i><span>新增耗卡</span></button>
+
 
           <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full ml-auto">共 {{filteredConsumption.length}} 条</span>
         </div>
@@ -742,7 +742,7 @@
           <tr v-if="patientCons.length===0"><td colspan="6" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
       </table>
-      <div v-if="patientSubTab==='cons'" class="flex gap-2 mt-3 mb-4 px-1"><button @click="selectedCon ? editConsumption(selectedCon) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button><button @click="selectedCon ? (delConsumption(selectedCon),selectedCon=null) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button></div>
+      
 
       <div class="flex gap-3 mt-6">
         <button @click="addAptForPatient(viewingPatient.id)" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><i class="fas fa-calendar-plus"></i><span>添加预约</span></button>
@@ -849,7 +849,6 @@ createApp({
       return hours;
     });
     const aptForm = reactive({ patient_id: '', month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
-    const conForm = reactive({ patient_id: '', month: new Date().getMonth() + 1, day: 1, project: '', amount: 0, time_slot: '', sync_to_apt: 0, is_recharge: false, recharge_amount: 0 });
 
     const weekDays = ['一','二','三','四','五','六','日'];
     const timeSlots = ['8:00-9:00','9:00-10:00','10:00-11:00','11:00-12:00','12:00-13:00','13:00-14:00','14:00-15:00','15:00-16:00','16:00-17:00','17:00-18:00','18:00-19:00','19:00-20:00','20:00-21:00','21:00-22:00'];
@@ -893,7 +892,6 @@ createApp({
       }
     });
     watch(() => aptForm.month, (m) => { if (aptForm.day > maxDay(m)) aptForm.day = maxDay(m); });
-    watch(() => conForm.month, (m) => { if (conForm.day > maxDay(m)) conForm.day = maxDay(m); });
 
     const dayStyle = function(day) {
       if (!day.isCurrentMonth) return { opacity: '0.25', cursor: 'default' };
@@ -953,10 +951,8 @@ createApp({
     // Consumption
     const consumption = ref([]);
     const conPatientId = ref('');
-    const showConModal = ref(false);
     const selectedCon = ref(null);
     const selectedApt = ref(null);
-    const editingConsumption = ref(null);
 
     const loadConsumption = async () => {
       let url = API + '/api/consumption?';
@@ -982,46 +978,6 @@ createApp({
     const checkSelect = (sel, msg) => { if (!sel) { showToast(msg || '请先选择一条记录'); return false; } return true; };
     const toggleSelectCon = (c) => { selectedCon.value = selectedCon.value?.id === c.id ? null : c; };
     const toggleSelectApt = (a) => { selectedApt.value = selectedApt.value?.id === a.id ? null : a; };
-    const editConsumption = (c) => {
-      editingConsumption.value = c;
-      Object.assign(conForm, { patient_id: c.patient_id, month: c.month, day: c.day, project: c.project, amount: c.amount, time_slot: c.time_slot || '', is_recharge: c.recharge_amount > 0, recharge_amount: c.recharge_amount || 0 });
-      conForm.sync_to_apt = conForm.time_slot ? 1 : 0;
-      showConModal.value = true;
-    };
-
-    const saveConsumption = async () => {
-      if (!conForm.project) { showToast('请选择项目'); return; }
-      conForm.sync_to_apt = conForm.time_slot ? 1 : 0;
-      const data = { patient_id: conForm.patient_id, month: conForm.month, day: conForm.day, project: conForm.project, amount: conForm.amount, time_slot: conForm.time_slot, sync_to_apt: conForm.sync_to_apt, recharge_amount: conForm.is_recharge ? (conForm.recharge_amount || 0) : 0, is_recharge: conForm.is_recharge ? 1 : 0 };
-      const url = editingConsumption.value
-        ? API + '/api/consumption/' + editingConsumption.value.id
-        : API + '/api/consumption';
-      const method = editingConsumption.value ? 'PUT' : 'POST';
-      try {
-        const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-        if (res.ok) {
-          const saved = await res.json();
-          if (editingConsumption.value) {
-            logHistory('update', 'consumption', saved.id, { old: { ...editingConsumption.value }, new: { ...saved } }, '修改耗卡: ' + (saved.patient_name || '') + ' ' + saved.month + '月' + saved.day + '日 ' + (saved.project || ''));
-          } else {
-            logHistory('add', 'consumption', saved.id, saved, '新增耗卡: ' + (saved.patient_name || '') + ' ' + saved.month + '月' + saved.day + '日 ' + (saved.project || ''));
-          }
-          showToast(editingConsumption.value ? '已更新' : '已添加');
-          showConModal.value = false;
-          editingConsumption.value = null;
-          Object.assign(conForm, { patient_id: '', month: new Date().getMonth() + 1, day: 1, project: '', amount: 0, time_slot: '', sync_to_apt: 0, is_recharge: false, recharge_amount: 0 });
-          const cid = editingConsumption.value?.patient_id || conForm.patient_id;
-          await Promise.all([loadPatients(), loadConsumption(), loadAppointments()]);
-          if (viewingPatient.value?.id === cid) await reloadPatientRecords();
-          clearPatientCache(cid);
-        } else {
-          const err = await res.text();
-          showToast('保存失败: ' + err);
-        }
-      } catch (e) {
-        showToast('网络错误');
-      }
-    };
 
     const reloadPatientRecords = async () => {
       if (!viewingPatient.value) return;
@@ -1309,9 +1265,7 @@ const delConsumption = async (con) => {
       const p = patients.value.find(pp => pp.id === pid);
       if (p) {
         viewingPatient.value = null;
-        Object.assign(conForm, { patient_id: pid, month: new Date().getMonth() + 1, day: 1, project: '', amount: 0, time_slot: '' });
-        editingConsumption.value = null;
-        showConModal.value = true;
+
       }
     };
 
