@@ -336,7 +336,10 @@
               <option v-for="p in patients" :key="p.id" :value="p.id">{{p.name}}</option>
             </select>
           </div>
-
+          <div class="flex items-center gap-2 bg-white rounded-2xl px-3 py-2 shadow-sm border border-gray-100/60">
+            <i class="fas fa-search text-gray-400 text-sm"></i>
+            <input v-model="patientSearch" type="text" placeholder="搜索..." class="border-none bg-transparent text-sm focus:outline-none" style="width:100px;font-size:0.8rem">
+          </div>
 
           <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full ml-auto">共 {{filteredConsumption.length}} 条</span>
         </div>
