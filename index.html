@@ -1010,7 +1010,10 @@ createApp({
           showConModal.value = false;
           editingConsumption.value = null;
           Object.assign(conForm, { patient_id: '', month: new Date().getMonth() + 1, day: 1, project: '', amount: 0, time_slot: '', sync_to_apt: 0 });
+          const cid = editingConsumption.value?.patient_id || conForm.patient_id;
           await Promise.all([loadPatients(), loadConsumption(), loadAppointments()]);
+          if (viewingPatient.value?.id === cid) await reloadPatientRecords();
+          clearPatientCache(cid);
         } else {
           const err = await res.text();
           showToast('保存失败: ' + err);
@@ -1062,7 +1065,10 @@ const delConsumption = async (con) => {
       
       logHistory('delete', 'consumption', con.id, historyData, '删除耗卡: ' + (con.patient_name || '') + ' ' + con.month + '月' + con.day + '日 ' + (con.project || '') + (linkedAppointment ? ' 及关联预约' : ''));
       showToast('已删除');
-      await Promise.all([loadPatients(), loadConsumption(), loadAppointments()]);
+      const cid = editingConsumption.value?.patient_id || conForm.patient_id;
+          await Promise.all([loadPatients(), loadConsumption(), loadAppointments()]);
+          if (viewingPatient.value?.id === cid) await reloadPatientRecords();
+          clearPatientCache(cid);
       if (typeof reloadPatientRecords === 'function') await reloadPatientRecords();
     };
 
