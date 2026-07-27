@@ -992,7 +992,7 @@ createApp({
     const saveConsumption = async () => {
       if (!conForm.project) { showToast('请选择项目'); return; }
       conForm.sync_to_apt = conForm.time_slot ? 1 : 0;
-      const data = { patient_id: conForm.patient_id, month: conForm.month, day: conForm.day, project: conForm.project, amount: conForm.amount, time_slot: conForm.time_slot, sync_to_apt: conForm.sync_to_apt, recharge_amount: conForm.recharge_amount || 0, is_recharge: conForm.is_recharge || false };
+      const data = { patient_id: conForm.patient_id, month: conForm.month, day: conForm.day, project: conForm.project, amount: conForm.amount, time_slot: conForm.time_slot, sync_to_apt: conForm.sync_to_apt, recharge_amount: conForm.is_recharge ? (conForm.recharge_amount || 0) : 0, is_recharge: conForm.is_recharge ? 1 : 0 };
       const url = editingConsumption.value
         ? API + '/api/consumption/' + editingConsumption.value.id
         : API + '/api/consumption';
@@ -1009,7 +1009,7 @@ createApp({
           showToast(editingConsumption.value ? '已更新' : '已添加');
           showConModal.value = false;
           editingConsumption.value = null;
-          Object.assign(conForm, { patient_id: '', month: new Date().getMonth() + 1, day: 1, project: '', amount: 0, time_slot: '', sync_to_apt: 0 });
+          Object.assign(conForm, { patient_id: '', month: new Date().getMonth() + 1, day: 1, project: '', amount: 0, time_slot: '', sync_to_apt: 0, is_recharge: false, recharge_amount: 0 });
           const cid = editingConsumption.value?.patient_id || conForm.patient_id;
           await Promise.all([loadPatients(), loadConsumption(), loadAppointments()]);
           if (viewingPatient.value?.id === cid) await reloadPatientRecords();
