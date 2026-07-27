@@ -583,47 +583,6 @@
     </div>
   </div>
 
-  <!-- ===== Modal: 新增/编辑耗卡 ===== -->
-  <div v-if="showConModal" class="modal-overlay" style="z-index:10000" @click.self="showConModal=false">
-    <div class="modal">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-base font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{editingConsumption?'编辑':'新增'}}耗卡</h2>
-        <button @click="showConModal=false" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="space-y-4">
-        <select v-model="conForm.patient_id" class="input">
-          <option value="">选择患者</option>
-          <option v-for="p in patients" :key="p.id" :value="p.id">{{p.name}}</option>
-        </select>
-        <div class="grid grid-cols-2 gap-3">
-          <select v-model="conForm.month" class="input"><option v-for="m in 12" :key="m" :value="m">{{m}}月</option></select>
-          <select v-model.number="conForm.day" class="input"><option v-for="d in maxDay(conForm.month)" :key="d" :value="d">{{d}}日</option></select>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
-          <select v-model="conForm.project" class="input">
-            <option value="">选择项目</option>
-            <option v-for="pr in projects" :key="pr.id" :value="pr.name">{{pr.name}}</option>
-            <option value="其他">其他</option>
-          </select>
-          <input v-model.number="conForm.amount" type="number" placeholder="输入金额" class="input">
-        </div>
-        <div>
-          <select v-model="conForm.time_slot" @change="conForm.sync_to_apt = conForm.time_slot ? 1 : 0" class="input">
-            <option value="">— 时段（可选）—</option>
-            <option v-for="s in timeSlots" :key="s" :value="s">{{s}}</option>
-          </select>
-          <div v-if="conForm.time_slot" class="text-xs text-primary mt-1.5"><i class="fas fa-info-circle mr-1"></i>已选择时段，保存后将自动同步到预约表</div>
-          <div v-else class="text-xs text-gray-400 mt-1.5"><i class="fas fa-info-circle mr-1"></i>未选择时段，仅记录耗卡，不同步预约</div>
-        <label class="flex items-center justify-end gap-2 text-sm cursor-pointer mt-2 w-full" style="color:var(--text-secondary)"><input type="checkbox" v-model="conForm.is_recharge" class="w-5 h-5" style="accent-color:var(--primary)"><span>充值</span><input v-if="conForm.is_recharge" v-model.number="conForm.recharge_amount" type="number" placeholder="金额" class="input" style="width:90px;padding:6px 10px;font-size:0.9rem;border-radius:8px"></label>
-        </div>
-      </div>
-      <div class="flex justify-end gap-3 mt-6">
-        <button @click="showConModal=false;editingConsumption=null;Object.assign(conForm,{patient_id:'',month:new Date().getMonth()+1,day:1,project:'',amount:0,time_slot:'',sync_to_apt:0,is_recharge:false,recharge_amount:0})" class="quick-btn" style="background:var(--warm-gray);color:var(--text-secondary);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><span>取消</span></button>
-        <button @click="saveConsumption" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:100px;padding:10px 16px;flex:none;font-size:0.85rem;flex-direction:row;gap:6px"><span>保存</span></button>
-      </div>
-    </div>
-  </div>
-
   <!-- ===== Modal: 患者表单 ===== -->
   <div v-if="showPatientModal" class="modal-overlay" @click.self="showPatientModal=false">
     <div class="modal">
