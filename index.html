@@ -337,8 +337,8 @@
             </select>
           </div>
           <div class="flex items-center gap-2 bg-white rounded-2xl px-3 py-2 shadow-sm border border-gray-100/60">
-            <i class="fas fa-search text-gray-400 text-sm"></i>
-            <input v-model="patientSearch" type="text" placeholder="搜索..." class="border-none bg-transparent text-sm focus:outline-none" style="width:100px;font-size:0.8rem">
+            <i class="fas fa-search text-primary text-sm"></i>
+            <input v-model="patientSearch" type="text" placeholder="搜索患者..." class="border-none bg-transparent text-sm focus:outline-none" style="width:110px;font-size:0.8rem">
           </div>
 
           <span class="text-xs text-gray-400 bg-warm px-3 py-1.5 rounded-full ml-auto">共 {{filteredConsumption.length}} 条</span>
@@ -380,7 +380,7 @@
       <div v-else class="card">
         <div class="flex justify-between items-center mb-3">
           <div class="flex items-center gap-2">
-            <span class="inline-block px-3 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-semibold">{{findPatient(conPatientId)?.name || ''}}</span>
+            <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary-dark text-base font-semibold link" @click="viewPatient(findPatient(conPatientId))">{{findPatient(conPatientId)?.name || ''}}</span>
             <span v-if="findPatient(conPatientId)?.has_recharge" class="inline-block px-2 py-1 rounded-full text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">已充值</span>
           </div>
           <span class="text-sm font-bold text-primary" style="margin-right:10px">合计: ¥{{filteredConsumption.reduce((s,c)=>s+c.amount,0)}}</span>
@@ -928,11 +928,13 @@ createApp({
       consumption.value = await res.json();
     };
 
-    const filteredConsumption = computed(() => consumption.value);
+    const filteredConsumption = computed(() => { let list = consumption.value; if (patientSearch.value) { const kw = patientSearch.value.toLowerCase(); list = list.filter(c => (c.patient_name || '').toLowerCase().includes(kw)); } return list; });
 
     const groupedConsumption = computed(() => {
       const groups = {};
-      consumption.value.forEach(c => {
+      let list = consumption.value;
+      if (patientSearch.value) { const kw = patientSearch.value.toLowerCase(); list = list.filter(c => (c.patient_name || '').toLowerCase().includes(kw)); }
+      list.forEach(c => {
         if (!groups[c.patient_id]) {
           groups[c.patient_id] = { patient_id: c.patient_id, patient_name: c.patient_name, records: [], total: 0 };
         }
