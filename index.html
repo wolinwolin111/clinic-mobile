@@ -806,8 +806,8 @@ createApp({
       setTimeout(() => toast.value = '', 2000);
     };
     const findPatient = (id) => patients.value.find(p => p.id === id);
-    const getPatientBalAfterCon = (pid, records, idx) => { let bal = 0; if (records && idx != null) { for (let i = 0; i <= idx; i++) { if (records[i].patient_id === pid || records[i].patient_id === Number(pid)) { bal += (records[i].recharge_amount || 0) - (records[i].amount || 0); } } } return Math.max(0, bal); };
-    const getPatientBalance = (id) => { const pid = Number(id); let bal = 0; for (const c of consumption.value) { if (c.patient_id === pid) { bal += (c.recharge_amount || 0) - (c.amount || 0); } } return Math.max(0, bal); };
+    const getPatientBalAfterCon = (pid, records, idx) => { let bal = 0; if (records && idx != null) { for (let i = 0; i <= idx; i++) { if (records[i].patient_id === pid || records[i].patient_id === Number(pid)) { bal = Math.max(0, bal + (records[i].recharge_amount || 0) - (records[i].amount || 0)); } } } return bal; };
+    const getPatientBalance = (id) => { const pid = Number(id); let bal = 0; for (const c of consumption.value) { if (c.patient_id === pid) { bal = Math.max(0, bal + (c.recharge_amount || 0) - (c.amount || 0)); } } return bal; };
 
     const goToApt = () => { showAptModal.value = true; };
     const editApt = (apt) => {
