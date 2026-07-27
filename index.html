@@ -1023,7 +1023,6 @@ const delConsumption = async (con) => {
       
       logHistory('delete', 'consumption', con.id, historyData, '删除耗卡: ' + (con.patient_name || '') + ' ' + con.month + '月' + con.day + '日 ' + (con.project || '') + (linkedAppointment ? ' 及关联预约' : ''));
       showToast('已删除');
-      const cid = editingConsumption.value?.patient_id || conForm.patient_id;
           await Promise.all([loadPatients(), loadConsumption(), loadAppointments()]);
           if (viewingPatient.value?.id === cid) await reloadPatientRecords();
           clearPatientCache(cid);
@@ -1325,8 +1324,8 @@ const delConsumption = async (con) => {
       aptMonth, showAptModal, editingAppointment, aptForm, editApt,
       weekDays, timeSlots, maxDay, dayStyle, calendarDays, selectedDay, dayTimeSlots, selectDay, prevMonth, nextMonth,
       appointments, loadAppointments, saveAppointment,
-      consumption, conPatientId, showConModal, editingConsumption, conForm, selectedCon, selectedApt, toggleSelectCon, toggleSelectApt,
-      filteredConsumption, groupedConsumption, editConsumption, saveConsumption, delConsumption,
+      consumption, conPatientId, selectedCon, selectedApt, toggleSelectCon, toggleSelectApt,
+      filteredConsumption, groupedConsumption,
       loadConsumption, delApt, delPatient,
       showProjectModal, editingProject, projectForm,
       editProject, saveProject, deleteProject,
