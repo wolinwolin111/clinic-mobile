@@ -357,7 +357,7 @@
           </div>
           <table class="tbl text-[0.6875rem]" style="table-layout:fixed;word-break:break-all">
             <thead class="table-header">
-              <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:22%">项目</th><th class="cell text-center" style="width:11%">金额</th><th class="cell text-center" style="width:18%">余额</th></tr>
+              <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:20%">项目</th><th class="cell text-center" style="width:13%">金额</th><th class="cell text-center" style="width:18%">余额</th></tr>
             </thead>
             <tbody>
               <tr v-for="(c,i) in g.records" :key="c.id" @click="toggleSelectCon(c)" class="border-b border-gray-50 cursor-pointer" :style="selectedCon?.id===c.id ? {background:'#F0EBF8',transform:'scale(1.02)',transition:'all 0.2s'} : {transition:'all 0.2s'}">
@@ -386,7 +386,7 @@
         </div>
         <table class="tbl text-[0.6875rem]" style="table-layout:fixed;word-break:break-all">
           <thead class="table-header">
-            <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:22%">项目</th><th class="cell text-center" style="width:11%">金额</th><th class="cell text-center" style="width:18%">余额</th></tr>
+            <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:20%">项目</th><th class="cell text-center" style="width:13%">金额</th><th class="cell text-center" style="width:18%">余额</th></tr>
           </thead>
           <tbody>
             <tr v-for="(c,i) in filteredConsumption" :key="c.id" @click="toggleSelectCon(c)" class="border-b border-gray-50 cursor-pointer" :style="selectedCon?.id===c.id ? {background:'#F0EBF8',transform:'scale(1.02)',transition:'all 0.2s'} : {transition:'all 0.2s'}">
