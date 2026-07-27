@@ -569,9 +569,9 @@
           <input v-model="aptForm.remark" placeholder="备注" class="input">
         </div>
         <div class="flex items-center gap-2">
-          <label class="flex items-center gap-1 text-xs cursor-pointer" style="color:var(--text-secondary);white-space:nowrap">
-            <input type="checkbox" v-model="aptForm.sync_to_con" class="w-3.5 h-3.5" style="accent-color:var(--primary)">
-            <span>同步到耗卡表</span>
+          <label class="flex items-center gap-1 text-sm cursor-pointer" style="color:var(--text-secondary);white-space:nowrap;font-size:0.9rem">
+            <input type="checkbox" v-model="aptForm.sync_to_con" class="w-5 h-5" style="accent-color:var(--primary)">
+            <span style="font-size:0.9rem">同步到耗卡表</span>
           </label>
           <label class="flex items-center justify-end gap-2 text-sm cursor-pointer mt-2 w-full" style="color:var(--text-secondary)"><input type="checkbox" v-model="aptForm.is_recharge" class="w-5 h-5" style="accent-color:var(--primary)"><span>充值</span><input v-if="aptForm.is_recharge" v-model.number="aptForm.recharge_amount" type="number" placeholder="金额" class="input" style="width:90px;padding:6px 10px;font-size:0.9rem;border-radius:8px"></label>
         </div>
