@@ -939,7 +939,7 @@ createApp({
           editingAppointment.value = null;
           Object.assign(aptForm, { patient_id: '', month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
           const pid = saved.patient_id;
-          await Promise.all([loadAppointments(), (isEdit || doSync) ? loadConsumption() : Promise.resolve()]);
+          await Promise.all([loadAppointments(), loadPatients(), (isEdit || doSync) ? loadConsumption() : Promise.resolve()]);
           if (pid) clearPatientCache(pid);
         } else {
           const err = await res.text();
