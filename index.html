@@ -925,7 +925,7 @@ createApp({
       try {
         const url = isEdit ? API + '/api/appointments/' + editingAppointment.value.id : API + '/api/appointments';
         const method = isEdit ? 'PUT' : 'POST';
-        const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({...aptForm}) });
+        const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({...aptForm, recharge_amount: aptForm.is_recharge ? (aptForm.recharge_amount || 0) : 0}) });
         if (res.ok) {
           const saved = await res.json();
           if (isEdit) {
