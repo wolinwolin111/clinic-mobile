@@ -47,7 +47,9 @@ jobs:
         run: gradle :app:assembleDebug --stacktrace
 
       - name: Verify APK signature
-        run: "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --verbose app/build/outputs/apk/debug/app-debug.apk
+        shell: bash
+        run: |
+          "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --verbose app/build/outputs/apk/debug/app-debug.apk
 
       - name: Name APK
         shell: bash
