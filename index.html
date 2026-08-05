@@ -12,35 +12,38 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   :root {
-    --primary: #2EAFAC;
-    --primary-dark: #1E8A87;
-    --primary-light: #E6F7F6;
-    --primary-gradient: linear-gradient(135deg, #2EAFAC, #1E8A87);
-    --accent: #FF6B6B;
-    --accent-light: #FFE8E8;
-    --navy: #1A2332;
-    --navy-light: #2C3E50;
-    --mint: #D4EDE7;
-    --lavender: #C8B6E2;
-    --lavender-dark: #8B7BBE;
-    --yellow: #FFF2A8;
-    --yellow-dark: #C4A83E;
-    --warm-gray: #F5F7FA;
-    --mint-dark: #4FB3A0;
-    --text-primary: #2d3436;
-    --text-secondary: #636e72;
-    --text-muted: #94A3B3;
-    --card-bg: #ffffff;
-    --shadow: 0 2px 12px rgba(0,0,0,0.08);
-    --radius: 12px;
+    --p-50:#EDF1F9; --p-100:#D4DEF0; --p-500:#4F78BE; --p-600:#3D5F9A; --p-700:#2E4877;
+    --g-50:#EDF2F0; --g-100:#D4E3DD; --g-500:#5A8A7A; --g-600:#477062;
+    --a-50:#F7F0F2; --a-100:#EED8DE; --a-400:#C07587; --a-500:#A85D6E; --a-600:#8C4859;
+    --pu-50:#F1EFF7; --pu-100:#DDD8EC; --pu-500:#7B6F9E; --pu-600:#625782;
+    --am-50:#FAF6F0; --am-100:#F2E8D5; --am-500:#C4A265; --am-600:#A6894E;
+    --bg-page:#F0F1F4; --bg-surface:#FFFFFF; --bg-subtle:#F5F6F9;
+    --t-strong:#1A1D28; --t-base:#383C4A; --t-muted:#727680; --t-placeholder:#9A9EA6;
+    --bd-subtle:#E8E9ED; --bd-default:#D4D6DC; --bd-strong:#BFC1C8;
+    --r-xs:6px; --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:20px; --r-2xl:24px; --r-full:9999px;
+    --sh-sm:0 1px 3px rgba(20,25,40,0.05),0 1px 2px rgba(20,25,40,0.03);
+    --sh-lg:0 10px 15px -3px rgba(20,25,40,0.06),0 4px 6px -4px rgba(20,25,40,0.03);
+    --sh-xl:0 20px 25px -5px rgba(20,25,40,0.08),0 8px 10px -6px rgba(20,25,40,0.04);
+    --ff-sans:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC','Microsoft YaHei',sans-serif;
+    --ff-mono:'SF Mono','JetBrains Mono','Cascadia Code',monospace;
+    /* Existing component aliases mapped to the desktop design system. */
+    --primary:var(--p-500); --primary-dark:var(--p-600); --primary-light:var(--p-50);
+    --primary-gradient:linear-gradient(135deg,var(--p-500),var(--p-600));
+    --accent:var(--a-500); --accent-light:var(--a-50);
+    --navy:var(--t-strong); --navy-light:var(--t-base);
+    --mint:var(--g-100); --mint-dark:var(--g-500);
+    --lavender:var(--pu-100); --lavender-dark:var(--pu-600);
+    --yellow:var(--am-100); --yellow-dark:var(--am-600);
+    --warm-gray:var(--bg-subtle); --text-primary:var(--t-strong); --text-secondary:var(--t-base); --text-muted:var(--t-muted);
+    --card-bg:var(--bg-surface); --shadow:var(--sh-sm); --radius:var(--r-xl);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background: #f0fcfc; font-family: -apple-system, "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif; color: var(--text-primary); line-height:1.7; }
-  .card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px 1px 8px 10px; }
-  .input { border: 1px solid #E0E0E0; padding: 10px 16px; font-size: 0.8rem; width: 100%; transition: all 0.2s; border-radius: var(--radius); background: #FFFFFF; }
-  .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 175, 172, 0.12); outline: none; }
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; }
-  .modal { background: #fff; padding: 12px; font-size: 0.8rem; max-width: 32rem; width: calc(100% - 2rem); margin: 0 auto; max-height: 90vh; overflow-y: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+  body { background:var(--bg-page); font-family:var(--ff-sans); color:var(--t-base); line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .card { background:var(--bg-surface); border-radius:var(--r-xl); box-shadow:var(--sh-sm); border:1px solid var(--bd-subtle); padding:20px; }
+  .input { border:1.5px solid var(--bd-default); padding:10px 16px; font-size:0.875rem; width:100%; transition:all 0.2s; border-radius:var(--r-md); background:var(--bg-surface); color:var(--t-strong); }
+  .input:focus { border-color:var(--g-500); box-shadow:0 0 0 4px rgba(90,138,122,0.15); outline:none; }
+  .modal-overlay { position:fixed; inset:0; background:rgba(25,30,50,0.40); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:9999; }
+  .modal { background:var(--bg-surface); padding:28px; font-size:0.875rem; max-width:32rem; width:calc(100% - 2rem); margin:0 auto; max-height:90vh; overflow-y:auto; border-radius:var(--r-2xl); box-shadow:var(--sh-xl); }
   .text-primary { color: var(--primary); }
   .text-primary-dark { color: var(--primary-dark); }
   .text-secondary { color: var(--text-secondary); }
@@ -58,16 +61,17 @@
   
   .stat-card:active { transform: scale(0.97); filter: brightness(0.94); }
   .stat-card .stat-icon { position: absolute; right: 12px; top: 12px; font-size: 1.5rem; opacity: 0.08; }
-  .quick-btn { flex: 1; min-width: 120px; padding: 18px 16px; border: 2px solid transparent; border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.2s; font-size: 0.9375rem; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .quick-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .quick-btn { flex:1; min-width:120px; padding:20px 12px; border:1.5px solid var(--bd-subtle); border-radius:var(--r-xl); text-align:center; cursor:pointer; transition:all 0.2s; font-size:0.8125rem; font-weight:600; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; }
+  .quick-btn:hover { transform:translateY(-2px); box-shadow:var(--sh-lg); }
   
   button:active:not(.mnav-btn):not(.nav-btn) { transform: scale(0.95) !important; filter: brightness(0.92); transition: all 0.1s; }
   .quick-btn i { font-size: 1.5rem; }
-  .section-title { font-size: 1.125rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--primary-light); display:flex; align-items:center; gap:8px; }
-  .section-title i { font-size: 1rem; color: var(--primary); }
+  .section-title { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--t-muted); margin-bottom:16px; padding-bottom:0; border-bottom:0; display:flex; align-items:center; gap:10px; }
+  .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(to right,var(--bd-default),transparent); }
+  .section-title i { font-size:0.8125rem; color:var(--g-500); }
   .module-section { margin-bottom: 32px; }
-  .table-header { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); background: #F8F9FA; }
-  .hero-greeting { font-size: 1.875rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; letter-spacing: 0.06em; }
+  .table-header { font-size:0.8125rem; font-weight:700; letter-spacing:0.03em; color:var(--t-base); background:var(--bg-subtle); }
+  .hero-greeting { font-size:1.875rem; font-weight:800; color:var(--t-strong); line-height:1.25; letter-spacing:0.02em; }
   .hero-sub { color: var(--text-secondary); font-size: 0.9375rem; }
   .nav-btn { padding: 10px 14px; font-size: 0.875rem; font-weight: 600; white-space: nowrap; transition: all 0.2s; color: var(--text-secondary); display: flex; align-items: center; gap: 5px; border-bottom: 2.5px solid transparent; margin-bottom: -1px; cursor: pointer; flex-shrink: 0; border-radius: 8px 8px 0 0; }
   .nav-btn:hover { opacity: 0.85; }
@@ -100,39 +104,103 @@
   .inline-block { display: inline-block; }
   .w-full { width: 100%; }
   .tbl { table-layout: fixed; width: 100%; }
+  .record-table-scroll { width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--primary-light) transparent; }
+  .record-table-scroll::-webkit-scrollbar { height: 4px; }
+  .record-table-scroll::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 999px; }
+  .record-table { table-layout: fixed; width: max-content !important; border-collapse: collapse; }
+  .record-table--appointments { min-width: 492px; }
+  .record-table--consumption { min-width: 584px; }
+  .record-table th,
+  .record-table td { white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; }
+  .record-table .cell > span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; }
+  .schedule-row { width: max-content; min-width: 510px; }
+  .schedule-items { flex: 0 0 auto !important; min-width: 400px; flex-wrap: nowrap !important; }
+  .schedule-entry { flex: 0 0 auto; white-space: nowrap; }
 
   /* ===== Mobile Styles ===== */
-  #mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: #b8f1ed; border-top: 1px solid rgba(0,0,0,0.08); }
+  #mobile-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:var(--bg-surface); border-top:1px solid var(--bd-subtle); box-shadow:0 -4px 20px rgba(15,23,42,0.06); padding-bottom:max(4px,env(safe-area-inset-bottom)); }
   #mobile-bottom-nav .mnav-inner { display: flex; }
-  #mobile-bottom-nav .mnav-btn { flex: 1; text-align: center; padding: 6px 2px 4px; font-size: 10px; cursor: pointer; border: none; background: transparent; color: #1A3A5C; transition: 0.2s; }
+  #mobile-bottom-nav .mnav-btn { flex:1; text-align:center; padding:7px 2px 5px; font-size:10px; font-weight:500; cursor:pointer; border:none; background:transparent; color:var(--t-muted); transition:0.2s; }
   #mobile-bottom-nav .mnav-btn i { display: block; font-size: 18px; margin-bottom: 1px; }
-  #mobile-bottom-nav .mnav-btn.active { background: #fff; border-radius: 8px 8px 0 0; }
+  #mobile-bottom-nav .mnav-btn.active { color:var(--p-600); background:var(--p-50); border-radius:var(--r-md); }
   @media (max-width: 768px) {
     #mobile-bottom-nav { display: block; }
     .desktop-only { display: none !important; }
-    .modal-overlay .modal { width: 94% !important; max-width: 94% !important; margin: 0 auto; top: 5% !important; max-height: 90vh !important; border-radius: 12px !important; }
+    .modal-overlay .modal { width:calc(100% - 24px) !important; max-width:calc(100% - 24px) !important; margin:0 auto; max-height:90vh !important; border-radius:var(--r-xl) !important; padding:18px !important; }
     .modal-overlay .modal .modal-body { max-height: 75vh !important; }
     .sticky.top-0 { position: static !important; }
-    main { padding-bottom: 12px; padding-left: 12px !important; padding-right: 12px !important; }
+    main { padding:16px 16px 76px !important; max-width:100% !important; }
     .app-footer { padding-bottom: 80px; }
-    table { max-width: 100%; }
-    .cell { padding: 4px !important; font-size: 0.75rem !important; }
-  main table { margin: 0 -4px; width: calc(100% + 8px) !important; }
-    .table-header { font-size: 0.7rem !important; }
-    @media (max-width: 380px) { .mnav-btn { font-size: 9px; padding: 4px 1px 3px; } .mnav-btn i { font-size: 15px; } }
+    .card { padding:16px; border-radius:var(--r-xl); overflow:visible; }
+    .module-section { margin-bottom:24px; }
+    .record-table-scroll { margin:0 -6px; width:calc(100% + 12px); padding:0; overflow:visible; }
+    .record-table { display:block; width:100% !important; min-width:0 !important; max-width:100% !important; table-layout:auto; }
+    .record-table colgroup { display:none; }
+    .record-table thead { display:block; width:100%; margin-bottom:4px; }
+    .record-table thead tr,
+    .record-table tbody tr { display:grid; width:100%; align-items:center; column-gap:2px; }
+    .record-table--appointments thead tr,
+    .record-table--appointments tbody tr { grid-template-columns:16px minmax(0,1.6fr) minmax(0,1.15fr) minmax(0,.9fr) minmax(0,.95fr); }
+    .record-table--consumption thead tr,
+    .record-table--consumption tbody tr { grid-template-columns:16px minmax(0,.95fr) minmax(0,1.22fr) minmax(0,.95fr) minmax(0,.82fr) minmax(0,.92fr); }
+    .record-table thead th { display:block; min-width:0; padding:4px 1px !important; border:0; background:var(--bg-subtle); color:var(--t-muted); font-size:clamp(0.59rem,2.6vw,0.69rem) !important; font-weight:700; line-height:1; text-align:center !important; white-space:nowrap !important; }
+    .record-table thead th:first-child { font-size:0 !important; }
+    .record-table thead th:first-child::before { content:'#'; font-size:clamp(0.59rem,2.6vw,0.69rem); }
+    .record-table tbody { display:grid; gap:6px; width:100%; }
+    .record-table tbody tr { padding:7px 5px; min-height:32px; background:var(--bg-surface); border:1px solid var(--bd-subtle) !important; border-left:2px solid var(--g-500) !important; border-radius:var(--r-sm); transform:none !important; box-shadow:0 1px 2px rgba(20,25,40,0.03); }
+    .record-table td { display:block; min-width:0; padding:0 !important; border:0 !important; font-size:clamp(0.62rem,2.75vw,0.74rem) !important; line-height:1.15; letter-spacing:-0.01em; white-space:nowrap !important; overflow:visible; text-overflow:clip; text-align:center !important; }
+    .record-table td > span { display:inline-block; width:auto; max-width:100%; padding:2px 1px !important; overflow:visible; text-overflow:clip; text-align:center; white-space:nowrap !important; font-size:inherit !important; }
+    .record-table td:first-child { color:var(--t-muted); font-family:var(--ff-mono); font-weight:700; }
+    .record-table--appointments th:nth-child(2),
+    .record-table--appointments td:nth-child(2),
+    .record-table--consumption th:nth-child(2),
+    .record-table--consumption td:nth-child(2) { text-align:left !important; }
+    .record-table--appointments td:nth-child(2) > span,
+    .record-table--consumption td:nth-child(2) > span { text-align:left; }
+    .record-table--appointments td:nth-child(2) > span > span { display:inline-block; margin-left:2px !important; padding:1px 2px !important; font-size:clamp(0.52rem,2.25vw,0.6rem) !important; line-height:1.15; white-space:nowrap !important; vertical-align:middle; }
+    .record-table--appointments td:nth-child(5),
+    .record-table--consumption td:nth-child(5) { color:#3264b3; font-family:var(--ff-mono); font-weight:900; }
+    .record-table--appointments td:nth-child(5) > span,
+    .record-table--consumption td:nth-child(5) > span { color:inherit !important; background:transparent !important; border-radius:0 !important; padding:0 !important; font:inherit; }
+    .record-table--appointments th:nth-child(5),
+    .record-table--consumption th:nth-child(5) { color:var(--p-700); background:var(--p-50); }
+    .record-table--consumption th:nth-child(6) { color:var(--a-600); background:var(--a-50); }
+    .record-table--consumption td:nth-child(6) { color:#b5485d !important; background:transparent !important; border-radius:0 !important; padding:0 !important; font-family:var(--ff-mono); font-size:clamp(0.72rem,3.1vw,0.84rem) !important; font-weight:900; letter-spacing:-0.02em; }
+    .record-table td:nth-child(3) i { display:none; }
+    .record-table td[colspan] { grid-column:1 / -1; grid-area:auto; padding:24px 0 !important; text-align:center; }
+    .schedule-row { width:100%; min-width:0; display:grid !important; grid-template-columns:92px minmax(0,1fr); }
+    .schedule-row > div:first-child { width:92px !important; }
+    .schedule-items { min-width:0; flex:1 1 auto !important; flex-wrap:wrap !important; }
+    .schedule-entry { max-width:100%; flex-wrap:wrap; }
+    .table-header { font-size:0.7rem !important; }
     .backup-section { display: none !important; }
-    .hero-logo { height: 125px !important; width: auto !important; max-width: 125px !important; }
-    .hero-box { padding: 18px 22px !important; }
-    .hero-inner { flex-direction: column !important; align-items: center !important; }
+    .hero-logo { height:76px !important; width:auto !important; max-width:76px !important; }
+    .hero-box { padding:14px 16px !important; border-radius:var(--r-xl) !important; box-shadow:var(--sh-sm) !important; }
+    .hero-inner { flex-direction:column !important; align-items:stretch !important; gap:12px !important; }
     .hero-left { width: 100%; }
-    .hero-row { flex-direction: row !important; align-items: center !important; gap: 10px !important; flex-wrap: nowrap !important; }
-    .hero-greeting { font-size: 1.3rem; font-weight: 900; line-height: 1.5; text-align: left; }
-    .hero-sub { font-size: 1.1rem; color: #666; font-weight: 400; text-align: left; }
-    .hero-btns { flex-direction: column; width: 100%; gap: 6px !important; }
-    .hero-btns .quick-btn { width: 100%; justify-content: center; }
-    .stat-card { padding: 12px !important; }
-    .stat-card .text-2xl { font-size: 1.25rem !important; }
+    .hero-row { flex-direction:row !important; align-items:center !important; gap:12px !important; flex-wrap:nowrap !important; }
+    .hero-greeting { font-size:1.25rem; font-weight:800; line-height:1.35; text-align:left; }
+    .hero-sub { font-size:0.75rem; color:var(--t-muted); font-weight:500; text-align:left; }
+    .hero-btns { flex-direction:row; width:100%; gap:8px !important; }
+    .hero-btns .quick-btn { width:auto; flex:1 !important; min-width:0 !important; justify-content:center; flex-direction:row; padding:10px 8px !important; border-radius:var(--r-md); }
+    .stat-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; }
+    .stat-card { padding:16px !important; min-height:118px; }
+    .stat-card .text-2xl { font-size:1.375rem !important; }
+    .stat-card .stat-icon { font-size:2.75rem; right:4px; top:4px; opacity:0.035; }
+    .quick-actions-shell { padding:0; border:0; box-shadow:none; background:transparent; }
+    .quick-actions { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px !important; }
+    .quick-actions .quick-btn { min-width:0 !important; min-height:82px; padding:14px 8px !important; border-radius:var(--r-xl); }
     .cal-cell { min-height: 40px !important; padding: 3px 2px !important; font-size: 0.75rem !important; }
+  }
+  @media (max-width:380px) {
+    #mobile-bottom-nav .mnav-btn { font-size:9px; padding:5px 1px 4px; }
+    #mobile-bottom-nav .mnav-btn i { font-size:15px; }
+    main { padding-left:12px !important; padding-right:12px !important; }
+    .record-table thead tr,
+    .record-table tbody tr { column-gap:2px; }
+    .record-table tbody tr { padding:6px 4px; }
+    .record-table td,
+    .record-table td > span { font-size:0.62rem !important; }
   }
   @media (min-width: 769px) {
     #mobile-bottom-nav { display: none !important; }
@@ -143,11 +211,11 @@
 <body>
 <div id="app">
   <!-- Tab Navigation -->
-  <nav style="background:#b8f1ed;border-bottom:1px solid rgba(0,0,0,0.06)" class="sticky top-0 z-30 desktop-only">
+  <nav style="background:var(--bg-surface);border-bottom:1px solid var(--bd-subtle);box-shadow:0 1px 3px rgba(15,23,42,0.03)" class="sticky top-0 z-30 desktop-only">
     <div class="mx-auto flex px-2 gap-1">
       <button v-for="(t,i) in tabs" :key="t.id" @click="activeTab = t.id"
         class="nav-btn"
-        :style="activeTab===t.id ? {background:'rgba(255,255,255,0.95)',color:tabColors[i],borderBottomColor:'transparent'} : {color:'#1A3A5C'}"
+        :style="activeTab===t.id ? {background:'var(--bg-subtle)',color:tabColors[i],borderBottomColor:tabColors[i]} : {color:'var(--t-muted)'}"
         :class="activeTab===t.id ? 'tab-active' : ''">
         <i :class="t.icon"></i>{{t.name}}
       </button>
@@ -173,8 +241,8 @@
             </div>
           </div>
           <div class="flex gap-2 hero-btns">
-            <button @click="goToApt" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:110px;padding:8px 14px;flex:none"><i class="fas fa-calendar-plus"></i><span>新建预约</span></button>
-            <button @click="goToPatient" class="quick-btn" style="background:linear-gradient(135deg, var(--mint), #D0F5E5);color:var(--primary-dark);min-width:110px;padding:8px 14px;flex:none"><i class="fas fa-user-plus"></i><span>新建患者</span></button>
+            <button @click="goToApt" class="quick-btn" style="background:linear-gradient(135deg,var(--p-50),var(--p-100));color:var(--p-600);min-width:110px;padding:8px 14px;flex:none"><i class="fas fa-calendar-plus"></i><span>新建预约</span></button>
+            <button @click="goToPatient" class="quick-btn" style="background:linear-gradient(135deg,var(--am-50),var(--am-100));color:var(--am-600);min-width:110px;padding:8px 14px;flex:none"><i class="fas fa-user-plus"></i><span>新建患者</span></button>
           </div>
         </div>
       </div>
@@ -182,24 +250,30 @@
       <!-- 数据概览模块 -->
       <div class="mb-8">
         <div class="section-title"><i class="fas fa-chart-pie text-primary"></i>数据概览</div>
-        <div class="grid grid-cols-1 gap-3">
+        <div class="grid grid-cols-1 gap-3 stat-grid">
           <div class="card stat-card" style="border-top:3px solid var(--primary);cursor:pointer;transition:all 0.2s" >
             <div class="stat-icon"><i class="fas fa-yen-sign text-primary"></i></div>
             <div class="text-xs text-gray-400 mb-1 font-medium">年度营收</div>
             <div class="text-2xl font-bold text-primary">¥{{stats.total_revenue?.toLocaleString()}}</div>
             <div class="text-xs text-gray-400 mt-1">月均 ¥{{stats.avg_revenue?.toLocaleString()}}</div>
           </div>
-          <div class="card stat-card" style="border-top:3px solid var(--primary-dark);cursor:pointer;transition:all 0.2s" >
+          <div class="card stat-card" style="border-top:3px solid var(--g-500);cursor:pointer;transition:all 0.2s" >
             <div class="stat-icon"><i class="fas fa-chart-line text-primary-dark"></i></div>
             <div class="text-xs text-gray-400 mb-1 font-medium">本月预约</div>
-            <div class="text-2xl font-bold text-primary-dark">{{stats.monthly?.find(m=>m.month===new Date().getMonth()+1)?.count || 0}}</div>
+            <div class="text-2xl font-bold" style="color:var(--g-600)">{{stats.monthly?.find(m=>m.month===new Date().getMonth()+1)?.count || 0}}</div>
             <div class="text-xs text-gray-400 mt-1">当月人次</div>
           </div>
-          <div class="card stat-card" style="border-top:3px solid var(--lavender-dark);cursor:pointer;transition:all 0.2s" >
+          <div class="card stat-card" style="border-top:3px solid var(--pu-500);cursor:pointer;transition:all 0.2s" >
             <div class="stat-icon"><i class="fas fa-users text-secondary"></i></div>
             <div class="text-xs text-gray-400 mb-1 font-medium">患者总数</div>
-            <div class="text-2xl font-bold text-secondary">{{stats.total_patients}}</div>
+            <div class="text-2xl font-bold" style="color:var(--pu-600)">{{stats.total_patients}}</div>
             <div class="text-xs text-gray-400 mt-1">累计患者</div>
+          </div>
+          <div class="card stat-card" style="border-top:3px solid var(--a-400);cursor:pointer;transition:all 0.2s">
+            <div class="stat-icon"><i class="fas fa-wallet text-secondary"></i></div>
+            <div class="text-xs text-gray-400 mb-1 font-medium">当前余额</div>
+            <div class="text-2xl font-bold" style="color:var(--a-500)">¥{{totalBalance.toLocaleString()}}</div>
+            <div class="text-xs text-gray-400 mt-1">待耗卡金额</div>
           </div>
         </div>
       </div>
@@ -207,21 +281,21 @@
       <!-- 快捷操作模块 -->
       <div class="mb-8">
         <div class="section-title"><i class="fas fa-bolt text-primary"></i>快捷操作</div>
-        <div class="card">
+        <div class="card quick-actions-shell">
         <div class="quick-actions" style="display:flex;gap:12px">
-          <div class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark)" @click="goToApt">
+          <div class="quick-btn" style="background:linear-gradient(135deg,var(--g-50),var(--g-100));color:var(--g-600)" @click="goToApt">
             <i class="fas fa-calendar-plus"></i>
             <span>新增预约</span>
           </div>
-          <div class="quick-btn" style="background:linear-gradient(135deg, var(--mint), #D0F5E5);color:var(--primary-dark)" @click="goToPatient">
+          <div class="quick-btn" style="background:linear-gradient(135deg,var(--p-50),var(--p-100));color:var(--p-700)" @click="goToPatient">
             <i class="fas fa-user-plus"></i>
             <span>新增患者</span>
           </div>
-          <div class="quick-btn" style="background:linear-gradient(135deg, var(--lavender), #E8DCF8);color:var(--lavender-dark)" @click="goToConsumption">
+          <div class="quick-btn" style="background:linear-gradient(135deg,var(--pu-50),var(--pu-100));color:var(--pu-600)" @click="goToConsumption">
             <i class="fas fa-magic"></i>
-            <span>生成耗卡</span>
+            <span>查看耗卡</span>
           </div>
-          <div class="quick-btn" style="background:linear-gradient(135deg, var(--yellow), #FFF8D6);color:#8B7E3D" @click="goToProjects">
+          <div class="quick-btn" style="background:linear-gradient(135deg,var(--am-50),var(--am-100));color:var(--am-600)" @click="goToProjects">
             <i class="fas fa-flask"></i>
             <span>治疗项目</span>
           </div>
@@ -285,7 +359,7 @@
       <div class="section-title"><i class="fas fa-calendar-alt text-primary"></i>预约管理</div>
 <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
         <button @click="prevMonth" style="width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;cursor:pointer;display:flex;align-items:center;justify-content:center"><i class="fas fa-chevron-left"></i></button>
-        <span style="font-size:1.125rem;font-weight:700;color:#1E8A87;min-width:3rem;text-align:center">{{aptMonth}}月</span>
+        <span style="font-size:1.125rem;font-weight:700;color:#1E8A87;min-width:7rem;text-align:center">{{aptYear}}年{{aptMonth}}月</span>
         <button @click="nextMonth" style="width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;cursor:pointer;display:flex;align-items:center;justify-content:center"><i class="fas fa-chevron-right"></i></button>
         <div style="flex:1"></div>
         <button @click="showAptModal=true" class="quick-btn" style="background:linear-gradient(135deg, var(--primary-light), #F0FCFA);color:var(--primary-dark);min-width:120px;padding:12px 18px;flex:none;font-size:0.9rem;flex-direction:row;gap:6px"><i class="fas fa-calendar-plus" style="font-size:1.1rem"></i><span>新增预约</span></button>
@@ -304,13 +378,14 @@
       <div v-if="selectedDay" class="modal-overlay">
         <div class="modal" style="max-width:600px">
           <div class="flex justify-between items-center mb-5">
-            <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{aptMonth}}月{{selectedDay.day}}日 时间表</h2>
+            <h2 class="text-lg font-bold" style="border-left:3px solid var(--primary);padding-left:0.75rem">{{aptYear}}年{{aptMonth}}月{{selectedDay.day}}日 时间表</h2>
             <button @click="selectedDay=null" class="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
           </div>
-          <div v-for="slot in dayTimeSlots" :key="slot.label" style="display:flex;border-bottom:1px solid #f5f5f5;min-height:48px">
+          <div class="record-table-scroll">
+          <div v-for="slot in dayTimeSlots" :key="slot.label" class="schedule-row" style="display:flex;border-bottom:1px solid #f5f5f5;min-height:48px">
             <div style="width:110px;flex-shrink:0;padding:10px 8px;font-size:0.8rem;font-weight:600;color:#888;text-align:center;border-right:1px solid #f0f0f0;background:#fafafa;white-space:nowrap">{{slot.label}}</div>
-            <div style="flex:1;padding:8px;display:flex;flex-wrap:wrap;align-items:center;gap:6px">
-              <div v-for="a in slot.appts" :key="a.id" style="display:flex;align-items:center;gap:6px">
+            <div class="schedule-items" style="flex:1;padding:8px;display:flex;align-items:center;gap:6px">
+              <div v-for="a in slot.appts" :key="a.id" class="schedule-entry" style="display:flex;align-items:center;gap:6px">
                 <span style="display:inline-block;background:var(--primary-light);color:var(--primary-dark);font-weight:600;font-size:0.8rem;padding:3px 10px;border-radius:6px">{{a.patient_name}}</span>
                 <span style="display:inline-block;background:var(--yellow);color:var(--yellow-dark);font-weight:600;font-size:0.75rem;padding:2px 8px;border-radius:6px">{{a.project}}</span>
                 <span style="font-size:0.8rem;font-weight:700;color:var(--primary-dark)">¥{{a.amount}}</span>
@@ -319,6 +394,7 @@
               </div>
               <div v-if="slot.appts.length===0" style="font-size:0.75rem;color:#ccc">空闲</div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -333,7 +409,7 @@
             <i class="fas fa-user text-primary text-sm"></i>
             <select v-model="conPatientId" class="border-none bg-transparent text-sm focus:outline-none" @change="loadConsumption">
               <option value="">全部患者</option>
-              <option v-for="p in patients" :key="p.id" :value="p.id">{{p.name}}</option>
+              <option v-for="p in patients" :key="p.id" :value="p.id">{{patientLabel(p)}}</option>
             </select>
           </div>
           <div class="flex items-center gap-2 bg-white rounded-2xl px-3 py-2 shadow-sm border border-gray-100/60">
@@ -355,25 +431,28 @@
             </div>
             <span class="text-sm font-bold text-primary" style="margin-right:10px">耗卡合计: ¥{{g.total}}</span>
           </div>
-          <table class="tbl text-[0.6875rem]" style="table-layout:fixed;word-break:break-all">
+          <div class="record-table-scroll">
+          <table class="record-table record-table--consumption text-[0.6875rem]">
+            <colgroup><col style="width:46px"><col style="width:104px"><col style="width:148px"><col style="width:116px"><col style="width:82px"><col style="width:88px"></colgroup>
             <thead class="table-header">
-              <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:20%">项目</th><th class="cell text-center" style="width:13%">金额</th><th class="cell text-center" style="width:18%">余额</th></tr>
+              <tr><th class="cell text-center">次数</th><th class="cell text-center">时间</th><th class="cell text-center">时段</th><th class="cell text-center">项目</th><th class="cell text-center">金额</th><th class="cell text-center">余额</th></tr>
             </thead>
             <tbody>
               <tr v-for="(c,i) in g.records" :key="c.id" @click="toggleSelectCon(c)" class="border-b border-gray-50 cursor-pointer" :style="selectedCon?.id===c.id ? {background:'#F0EBF8',transform:'scale(1.02)',transition:'all 0.2s'} : {transition:'all 0.2s'}">
                 <td class="cell text-center font-medium">{{i+1}}</td>
-                <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
+                <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.year}}.{{c.month}}.{{c.day}}</span></td>
                 <td class="cell" style="white-space:nowrap">
                   <span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
                   <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
                 </td>
                 <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
                 
-                <td class="cell text-center font-medium"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
+                <td class="cell text-center font-medium"><span>¥{{c.amount}}</span></td>
                 <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, g.records, i)}}</td>
               </tr>
         </tbody>
-      </table>
+          </table>
+          </div>
         </div>
       </div>
       <div v-else class="card">
@@ -384,25 +463,28 @@
           </div>
           <span class="text-sm font-bold text-primary" style="margin-right:10px">耗卡合计: ¥{{filteredConsumption.reduce((s,c)=>s+c.amount,0)}}</span>
         </div>
-        <table class="tbl text-[0.6875rem]" style="table-layout:fixed;word-break:break-all">
+        <div class="record-table-scroll">
+        <table class="record-table record-table--consumption text-[0.6875rem]">
+          <colgroup><col style="width:46px"><col style="width:104px"><col style="width:148px"><col style="width:116px"><col style="width:82px"><col style="width:88px"></colgroup>
           <thead class="table-header">
-            <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:20%">项目</th><th class="cell text-center" style="width:13%">金额</th><th class="cell text-center" style="width:18%">余额</th></tr>
+            <tr><th class="cell text-center">次数</th><th class="cell text-center">时间</th><th class="cell text-center">时段</th><th class="cell text-center">项目</th><th class="cell text-center">金额</th><th class="cell text-center">余额</th></tr>
           </thead>
           <tbody>
             <tr v-for="(c,i) in filteredConsumption" :key="c.id" @click="toggleSelectCon(c)" class="border-b border-gray-50 cursor-pointer" :style="selectedCon?.id===c.id ? {background:'#F0EBF8',transform:'scale(1.02)',transition:'all 0.2s'} : {transition:'all 0.2s'}">
               <td class="cell text-center font-medium">{{i+1}}</td>
-              <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
+              <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.year}}.{{c.month}}.{{c.day}}</span></td>
               <td class="cell" style="white-space:nowrap">
                 <span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.time_slot || '-'}}</span>
                   <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
               </td>
               <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
               
-              <td class="cell text-center font-medium"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
+              <td class="cell text-center font-medium"><span>¥{{c.amount}}</span></td>
               <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, filteredConsumption, i)}}</td>
             </tr>
         </tbody>
-      </table>
+        </table>
+        </div>
       </div>
     </div>
 
@@ -492,17 +574,16 @@
             <div v-for="p in groupedPatients[group]" :key="p.id" class="card hover-card-shadow">
               <div class="flex items-start justify-between mb-3">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-2xl bg-primary-light flex items-center justify-center text-sm font-bold text-primary-dark">
+                  <button type="button" @click="viewPatient(p)" :aria-label="'查看'+p.name+'详情'" title="查看患者详情" class="w-10 h-10 rounded-2xl bg-primary-light flex items-center justify-center text-sm font-bold text-primary-dark">
                     {{p.name?.[0] || '?'}}
-            
-                  </div>
+                  </button>
                   <div>
                     <h3 class="font-semibold link" style="color:var(--primary-dark)" @click="viewPatient(p)">{{p.name}}</h3>
                   </div>
                 </div>
               </div>
               <div class="flex gap-2 pt-3 border-t border-gray-50">
-                <button @click="viewPatient(p)" class="flex-1 text-xs py-1.5 rounded-full bg-primary-light text-primary-dark font-medium transition-colors hover:bg-primary hover:text-white">查看</button>
+                <button @click="editPatient(p)" class="flex-1 text-xs py-1.5 rounded-full bg-primary-light text-primary-dark font-medium transition-colors hover:bg-primary hover:text-white"><i class="fas fa-edit mr-1"></i>编辑</button>
                 
                 <button @click="deletePatient(p)" class="flex-1 text-xs py-1.5 rounded-full text-accent font-medium transition-colors hover:bg-accent hover:text-white" style="background:rgba(255,107,107,0.15)">删除</button>
               </div>
@@ -543,7 +624,7 @@
   <div class="app-footer" style="border-top:1px solid #f0f0f0;margin-top:12px">
     <div class="mx-auto px-2 py-2 text-center">
       <div class="text-xs text-gray-400">悦舒运动康复 · 管理系统</div>
-      <div class="text-xs text-gray-300 mt-1">© 2026 悦舒运动康复中心</div>
+      <div class="text-xs text-gray-300 mt-1">© {{currentYear}} 悦舒运动康复中心</div>
     </div>
   </div>
 
@@ -557,11 +638,12 @@
       <div class="space-y-4">
         <select v-model="aptForm.patient_id" class="input">
           <option value="">选择患者</option>
-          <option v-for="p in patients" :key="p.id" :value="p.id">{{p.name}}</option>
+          <option v-for="p in patients" :key="p.id" :value="p.id">{{patientLabel(p)}}</option>
         </select>
         <div class="grid grid-cols-3 gap-3">
+          <input v-model.number="aptForm.year" type="number" min="2000" max="2100" class="input" style="width:100px" aria-label="年份">
           <select v-model="aptForm.month" class="input"><option v-for="m in 12" :key="m" :value="m">{{m}}月</option></select>
-          <select v-model.number="aptForm.day" class="input"><option v-for="d in maxDay(aptForm.month)" :key="d" :value="d">{{d}}日</option></select>
+          <select v-model.number="aptForm.day" class="input"><option v-for="d in maxDay(aptForm.year,aptForm.month)" :key="d" :value="d">{{d}}日</option></select>
           <select v-model="aptForm.time_slot" class="input">
             <option value="">选择时段</option>
             <option v-for="s in timeSlots" :key="s" :value="s">{{s}}</option>
@@ -662,46 +744,52 @@
           <i :class="st.icon" class="mr-1"></i>{{st.name}}
           <span class="text-xs ml-1 text-gray-400">({{st.count}})</span>
         </button>
-        <span v-if="patientCons.length > 0" class="inline-flex flex-col items-center justify-center px-2 py-1 rounded-full text-xs font-bold ml-auto text-center" style="color:var(--accent);border:1px solid var(--accent-light);background:#FFF5F5;max-width:72px">耗卡合计<br>¥{{patientCons.reduce((s,c)=>s+c.amount,0)}}</span>
+        <span v-if="patientCons.length > 0" class="inline-flex items-center justify-center px-2 py-1 rounded-full text-xs font-bold ml-auto text-center" style="color:var(--a-500);border:1px solid var(--a-100);background:var(--a-50);white-space:nowrap">耗卡合计 ¥{{patientCons.reduce((s,c)=>s+c.amount,0)}}</span>
       </div>
 
-      <table v-if="patientSubTab==='apts'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
+      <div v-if="patientSubTab==='apts'" class="record-table-scroll">
+      <table class="record-table record-table--appointments text-[0.6875rem]">
+        <colgroup><col style="width:46px"><col style="width:122px"><col style="width:138px"><col style="width:112px"><col style="width:74px"></colgroup>
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-left" style="width:30%;padding-left:8px!important">时间</th><th class="cell text-center" style="width:24%">时段</th><th class="cell text-center" style="width:20%">项目</th><th class="cell text-center" style="width:16%">金额</th></tr>
+          <tr><th class="cell text-center">次数</th><th class="cell text-left" style="padding-left:8px!important">时间</th><th class="cell text-center">时段</th><th class="cell text-center">项目</th><th class="cell text-center">金额</th></tr>
         </thead>
         <tbody>
           <tr v-for="(a, i) in patientApts" :key="a.id" class="border-b border-gray-50 cursor-pointer" @click="toggleSelectApt(a)" :style="selectedApt?.id===a.id ? {background:'#F0EBF8',transform:'scale(1.02)',transition:'all 0.2s'} : {transition:'all 0.2s'}">
             <td class="cell text-center font-medium">{{i+1}}</td>
-            <td class="cell text-left" style="padding-left:8px!important"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.month}}.{{a.day}}<span v-if="a.recharge_amount" class="ml-1 px-1 rounded text-xs font-bold" style="background:#FFE0E0;color:#CC0000">+{{a.recharge_amount}}</span></span></td>
+            <td class="cell text-left" style="padding-left:8px!important"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{a.year}}.{{a.month}}.{{a.day}}<span v-if="a.recharge_amount" class="ml-1 px-1 rounded text-xs font-bold" style="background:#FFE0E0;color:#CC0000">+{{a.recharge_amount}}</span></span></td>
             <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.time_slot}}</span></td>
             <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{a.project}}</span></td>
-            <td class="cell text-center font-medium"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{a.amount}}</span></td>
+            <td class="cell text-center font-medium"><span>¥{{a.amount}}</span></td>
             
           </tr>
           <tr v-if="patientApts.length===0"><td colspan="5" class="text-center text-gray-400 py-8">暂无预约记录</td></tr>
         </tbody>
       </table>
+      </div>
       <div v-if="patientSubTab==='apts'" class="flex gap-2 mt-3 mb-4 px-1"><button @click="selectedApt ? editApt(selectedApt) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--primary)"><i class="fas fa-edit mr-1"></i>编辑</button><button @click="selectedApt ? (delApt(selectedApt),selectedApt=null) : showToast('请先选择一条记录')" class="flex-1 py-2.5 rounded-xl font-semibold text-white text-sm" style="background:var(--accent)"><i class="fas fa-trash mr-1"></i>删除</button></div>
 
-      <table v-if="patientSubTab==='cons'" class="w-full text-[0.6875rem]" style="table-layout:fixed">
+      <div v-if="patientSubTab==='cons'" class="record-table-scroll">
+      <table class="record-table record-table--consumption text-[0.6875rem]">
+        <colgroup><col style="width:46px"><col style="width:104px"><col style="width:148px"><col style="width:116px"><col style="width:82px"><col style="width:88px"></colgroup>
         <thead class="table-header">
-          <tr><th class="cell text-center" style="width:10%">次数</th><th class="cell text-center" style="width:12%">时间</th><th class="cell text-center" style="width:27%">时段</th><th class="cell text-center" style="width:22%">项目</th><th class="cell text-center" style="width:11%">金额</th><th class="cell text-center" style="width:18%">余额</th></tr>
+          <tr><th class="cell text-center">次数</th><th class="cell text-center">时间</th><th class="cell text-center">时段</th><th class="cell text-center">项目</th><th class="cell text-center">金额</th><th class="cell text-center">余额</th></tr>
         </thead>
         <tbody>
           <tr v-for="(c, i) in patientCons" :key="c.id" class="border-b border-gray-50 cursor-pointer" @click="toggleSelectCon(c)" :style="selectedCon?.id===c.id ? {background:'#F0EBF8',transform:'scale(1.02)',transition:'all 0.2s'} : {transition:'all 0.2s'}">
             <td class="cell text-center font-medium">{{i+1}}</td>
-            <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.month}}.{{c.day}}</span></td>
+            <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-warm text-gray-600 text-xs font-medium">{{c.year}}.{{c.month}}.{{c.day}}</span></td>
             <td class="cell" style="white-space:nowrap">
               <span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium">{{c.time_slot || '-'}}</span>
               <i v-if="c.sync_to_apt" class="fas fa-link text-primary text-xs ml-1 opacity-60" title="已同步到预约"></i>
             </td>
             <td class="cell text-center"><span class="inline-block py-1 rounded-full bg-primary-light text-primary-dark text-xs font-medium" style="white-space:nowrap">{{c.project}}</span></td>
-            <td class="cell text-center font-medium"><span class="inline-block py-1 rounded-full bg-accent-light text-accent text-xs font-bold">¥{{c.amount}}</span></td>
+            <td class="cell text-center font-medium"><span>¥{{c.amount}}</span></td>
             <td class="cell text-center font-bold" style="color:var(--accent);font-size:0.75rem">¥{{getPatientBalAfterCon(c.patient_id, patientCons, i)}}</td>
           </tr>
           <tr v-if="patientCons.length===0"><td colspan="6" class="text-center text-gray-400 py-8">暂无耗卡记录</td></tr>
         </tbody>
       </table>
+      </div>
       
 
       <div class="flex gap-3 mt-6">
@@ -723,7 +811,7 @@
     <div class="mnav-inner">
       <button v-for="(t,i) in tabs" :key="'m'+t.id" @click="activeTab = t.id"
         class="mnav-btn" :class="{ active: activeTab === t.id }"
-        :style="{ color: activeTab === t.id ? tabColors[i] : '#1A3A5C' }">
+        :style="{ color: activeTab === t.id ? tabColors[i] : 'var(--t-muted)' }">
         <i :class="t.icon"></i>
         <span>{{t.name}}</span>
       </button>
@@ -734,7 +822,8 @@
 
 <script>
 const { createApp, ref, reactive, computed, onMounted, nextTick, watch } = Vue;
-const API = '';
+// Keep the mobile adaptation on the same HTTPS API and database as desktop.
+const API = '/clinic';
 
 createApp({
   setup() {
@@ -746,7 +835,7 @@ createApp({
       { id: 'patients', name: '患者管理', icon: 'fas fa-users' },
       { id: 'history', name: '操作记录', icon: 'fas fa-history' },
     ];
-    const tabColors = ['#2EAFAC','#E88CA5','#9B8EC4','#5BA3CF','#6BBF7A','#D4A056'];
+    const tabColors = ['#4F78BE','#A85D6E','#7B6F9E','#5A8A7A','#C4A265','#727680'];
     const activeTab = ref('dashboard');
     const toast = ref('');
 
@@ -765,13 +854,20 @@ createApp({
       setTimeout(() => toast.value = '', 2000);
     };
     const findPatient = (id) => patients.value.find(p => p.id === id);
+    const currentYear = new Date().getFullYear();
+    const patientLabel = (p) => p.name;
+    const errorMessage = async (response, fallback='操作失败') => {
+      const text = await response.text();
+      if (!text) return fallback;
+      try { const data=JSON.parse(text); return data.error || data.message || fallback; } catch (_) { return text; }
+    };
     const getPatientBalAfterCon = (pid, records, idx) => { let bal = 0; if (records && idx != null) { for (let i = 0; i <= idx; i++) { if (records[i].patient_id === pid || records[i].patient_id === Number(pid)) { if (bal > 0 || records[i].recharge_amount > 0) { bal = Math.max(0, bal + (records[i].recharge_amount || 0) - (records[i].amount || 0)); } } } } return bal; };
     const getPatientBalance = (id) => { const pid = Number(id); let bal = 0; for (const c of consumption.value) { if (c.patient_id === pid) { if (bal > 0 || c.recharge_amount > 0) { bal = Math.max(0, bal + (c.recharge_amount || 0) - (c.amount || 0)); } } } return bal; };
 
     const goToApt = () => { showAptModal.value = true; };
     const editApt = (apt) => {
       editingAppointment.value = apt;
-      Object.assign(aptForm, { patient_id: apt.patient_id, month: apt.month, day: apt.day, time_slot: apt.time_slot || '', project: apt.project, amount: apt.amount, remark: apt.remark || '', sync_to_con: true, is_recharge: apt.recharge_amount > 0, recharge_amount: apt.recharge_amount || 0 });
+      Object.assign(aptForm, { patient_id: apt.patient_id, year: apt.year, month: apt.month, day: apt.day, time_slot: apt.time_slot || '', project: apt.project, amount: apt.amount, remark: apt.remark || '', sync_to_con: true, is_recharge: apt.recharge_amount > 0, recharge_amount: apt.recharge_amount || 0 });
       showAptModal.value = true;
     };
     const goToPatient = () => { activeTab.value = 'patients'; nextTick(() => { showPatientModal.value = true; }); };
@@ -781,6 +877,7 @@ createApp({
     const goToProjects = () => { activeTab.value = 'projects'; };
 
     // Appointments - Calendar view
+    const aptYear = ref(currentYear);
     const aptMonth = ref(new Date().getMonth() + 1);
     const appointments = ref([]);
     const showAptModal = ref(false);
@@ -807,14 +904,14 @@ createApp({
       }
       return hours;
     });
-    const aptForm = reactive({ patient_id: '', month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
+    const aptForm = reactive({ patient_id: '', year: aptYear.value, month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
 
     const weekDays = ['一','二','三','四','五','六','日'];
     const timeSlots = ['8:00-9:00','9:00-10:00','10:00-11:00','11:00-12:00','12:00-13:00','13:00-14:00','14:00-15:00','15:00-16:00','16:00-17:00','17:00-18:00','18:00-19:00','19:00-20:00','20:00-21:00','21:00-22:00'];
-    const maxDay = (month) => [31,29,31,30,31,30,31,31,30,31,30,31][(month||1)-1];
+    const maxDay = (year, month) => new Date(Number(year)||currentYear, Number(month)||1, 0).getDate();
 
     const calendarDays = computed(() => {
-      const year = 2026;
+      const year = aptYear.value;
       const m = aptMonth.value;
       const firstDay = new Date(year, m - 1, 1).getDay();
       const daysInMonth = new Date(year, m, 0).getDate();
@@ -850,7 +947,7 @@ createApp({
         if (match) selectedDay.value = match;
       }
     });
-    watch(() => aptForm.month, (m) => { if (aptForm.day > maxDay(m)) aptForm.day = maxDay(m); });
+    watch([() => aptForm.year, () => aptForm.month], ([y,m]) => { if (aptForm.day > maxDay(y,m)) aptForm.day = maxDay(y,m); });
 
     const dayStyle = function(day) {
       if (!day.isCurrentMonth) return { opacity: '0.25', cursor: 'default' };
@@ -859,15 +956,15 @@ createApp({
     };
 
     const prevMonth = function() {
-      aptMonth.value = aptMonth.value === 1 ? 12 : aptMonth.value - 1;
+      if (aptMonth.value === 1) { aptMonth.value = 12; aptYear.value--; } else aptMonth.value--;
     };
 
     const nextMonth = function() {
-      aptMonth.value = aptMonth.value === 12 ? 1 : aptMonth.value + 1;
+      if (aptMonth.value === 12) { aptMonth.value = 1; aptYear.value++; } else aptMonth.value++;
     };
 
     const loadAppointments = async () => {
-      const year = 2026;
+      const year = aptYear.value;
       const month = aptMonth.value;
       const res = await fetch(API + '/api/appointments?year=' + year + '&month=' + month);
       const data = await res.json();
@@ -886,21 +983,20 @@ createApp({
         if (res.ok) {
           const saved = await res.json();
           if (isEdit) {
-            logHistory('update', 'appointment', saved.id, { old: oldData, new: saved }, '修改预约: ' + (saved.patient_name || '') + ' ' + saved.month + '月' + saved.day + '日 ' + (saved.time_slot || ''));
+            logHistory('update', 'appointment', saved.id, { old: oldData, new: saved }, '修改预约: ' + (saved.patient_name || '') + ' ' + saved.year + '年' + saved.month + '月' + saved.day + '日 ' + (saved.time_slot || ''));
             showToast('已更新');
           } else {
-            logHistory('add', 'appointment', saved.id, saved, '新增预约: ' + (saved.patient_name || '') + ' ' + saved.month + '月' + saved.day + '日 ' + (saved.time_slot || ''));
+            logHistory('add', 'appointment', saved.id, saved, '新增预约: ' + (saved.patient_name || '') + ' ' + saved.year + '年' + saved.month + '月' + saved.day + '日 ' + (saved.time_slot || ''));
             showToast('已添加');
           }
           showAptModal.value = false;
           editingAppointment.value = null;
-          Object.assign(aptForm, { patient_id: '', month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
+          Object.assign(aptForm, { patient_id: '', year: aptYear.value, month: aptMonth.value, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
           const pid = saved.patient_id;
           await Promise.all([loadAppointments(), loadPatients(), (isEdit || doSync) ? loadConsumption() : Promise.resolve()]);
           if (pid) { clearPatientCache(pid); if (viewingPatient.value?.id === pid) await reloadPatientRecords(); }
         } else {
-          const err = await res.text();
-          showToast('保存失败: ' + err);
+          showToast('保存失败: ' + await errorMessage(res));
         }
       } catch (e) {
         showToast('网络错误');
@@ -933,6 +1029,8 @@ createApp({
         groups[c.patient_id].records.push(c);
         groups[c.patient_id].total += c.amount;
       });
+      Object.values(groups).forEach(group => group.records.sort((a,b) =>
+        (a.year*10000+a.month*100+a.day) - (b.year*10000+b.month*100+b.day)));
       return Object.values(groups);
     });
 
@@ -954,12 +1052,15 @@ createApp({
 
     const delApt = async (apt) => {
       if (!confirm('确定删除该预约？')) return;
-      const pid = apt.patient_id;
-      await fetch(API + '/api/appointments/' + apt.id, { method: 'DELETE' });
-      logHistory('delete', 'appointment', apt.id, apt, '删除预约: ' + (apt.patient_name || '') + ' ' + apt.month + '月' + apt.day + '日 ' + (apt.time_slot || ''));
-      showToast('已删除');
-      await Promise.all([loadAppointments(), loadConsumption()]);
-      if (pid) clearPatientCache(pid);
+      try {
+        const pid = apt.patient_id;
+        const response = await fetch(API + '/api/appointments/' + apt.id, { method: 'DELETE' });
+        if (!response.ok) { showToast(await errorMessage(response, '删除失败')); return; }
+        logHistory('delete', 'appointment', apt.id, apt, '删除预约: ' + (apt.patient_name || '') + ' ' + apt.year + '年' + apt.month + '月' + apt.day + '日 ' + (apt.time_slot || ''));
+        showToast('已删除');
+        await Promise.all([loadAppointments(), loadConsumption(), loadPatients()]);
+        if (pid) clearPatientCache(pid);
+      } catch (_) { showToast('网络错误，请稍后重试'); }
     };
 
     const delPatient = async (p) => {
@@ -983,7 +1084,7 @@ createApp({
     // Stats
     const stats = ref({});
     const loadStats = async () => {
-      const res = await fetch(API + '/api/stats');
+      const res = await fetch(API + '/api/stats?year=' + aptYear.value);
       stats.value = await res.json();
     };
 
@@ -1014,6 +1115,8 @@ createApp({
       lastBackup.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
       showToast('Excel表格已导出');
     };
+    const totalBalance = computed(() => patients.value.filter(p=>p.has_recharge||p.balance>0).reduce((s,p)=>s+(p.balance||0),0));
+
     const recentAppointments = computed(() => {
       return [...appointments.value].sort((a,b) => (b.month*100 + b.day) - (a.month*100 + a.day)).slice(0, 5);
     });
@@ -1060,7 +1163,7 @@ createApp({
     const patientSearch = ref('');
     const showPatientModal = ref(false);
     const editingPatient = ref(null);
-    const patientForm = reactive({ name: '', age: '', gender: '', balance: 0, has_recharge: '0' });
+    const patientForm = reactive({ name: '', age: '', gender: '' });
 
     const filteredPatients = computed(() => {
       let list = patients.value;
@@ -1080,18 +1183,18 @@ createApp({
 
     const editPatient = (p) => {
       editingPatient.value = p;
-      Object.assign(patientForm, { name: p.name, age: p.age || '', gender: p.gender || '', balance: p.balance || 0, has_recharge: String(p.has_recharge || 0) });
+      Object.assign(patientForm, { name: p.name, age: p.age || '', gender: p.gender || '' });
       showPatientModal.value = true;
     };
 
     const savePatient = async () => {
       if (!patientForm.name.trim()) { showToast('请输入姓名'); return; }
-      const data = { name: patientForm.name, age: patientForm.age, gender: patientForm.gender, balance: patientForm.balance || 0, has_recharge: parseInt(patientForm.has_recharge) || 0 };
+      const data = { name: patientForm.name, age: patientForm.age, gender: patientForm.gender };
       const url = editingPatient.value
         ? API + '/api/patients/' + editingPatient.value.id
         : API + '/api/patients';
       const method = editingPatient.value ? 'PUT' : 'POST';
-      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      try { const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
       if (res.ok) {
         if (editingPatient.value) {
           const updated = await res.json();
@@ -1103,12 +1206,11 @@ createApp({
         showToast(editingPatient.value ? '已更新' : '已添加');
         showPatientModal.value = false;
         editingPatient.value = null;
-      Object.assign(patientForm, { name: '', age: '', gender: '', balance: 0, has_recharge: '0' });
+      Object.assign(patientForm, { name: '', age: '', gender: '' });
       await loadPatients();
       } else {
-        const err = await res.json();
-        showToast(err.error || '操作失败');
-      }
+        showToast(await errorMessage(res));
+      }} catch (_) { showToast('网络错误，请稍后重试'); }
     };
 
     const deletePatient = async (p) => {
@@ -1178,7 +1280,7 @@ createApp({
       const p = patients.value.find(pp => pp.id === pid);
       if (p) {
         viewingPatient.value = null;
-        Object.assign(aptForm, { patient_id: pid, month: new Date().getMonth() + 1, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
+        Object.assign(aptForm, { patient_id: pid, year: currentYear, month: new Date().getMonth() + 1, day: 1, time_slot: '', project: '', amount: 0, remark: '', sync_to_con: true, is_recharge: false, recharge_amount: 0 });
         showAptModal.value = true;
       }
     };
@@ -1233,7 +1335,7 @@ createApp({
     });
 
     // Reload appointments when month changes
-    watch(aptMonth, () => { loadAppointments(); });
+    watch([aptYear, aptMonth], () => { loadAppointments(); loadStats(); });
 
     setInterval(() => {
       if (activeTab.value === 'appointments') loadAppointments();
@@ -1242,11 +1344,11 @@ createApp({
 
     return {
       tabs, tabColors, activeTab, toast,
-      patients, projects, loadPatients, showToast, findPatient,
-      stats, loadStats, getBarHeight, getBarColor, getMonthTotal, recentAppointments,
+      patients, projects, loadPatients, showToast, findPatient, patientLabel, currentYear,
+      stats, loadStats, totalBalance, getBarHeight, getBarColor, getMonthTotal, recentAppointments,
       lastBackup, downloadBackup, exportExcel, hoveredMonth,
       goToApt, goToPatient, goToConsumption, goToProjects,
-      aptMonth, showAptModal, editingAppointment, aptForm, editApt,
+      aptYear, aptMonth, showAptModal, editingAppointment, aptForm, editApt,
       weekDays, timeSlots, maxDay, dayStyle, calendarDays, selectedDay, dayTimeSlots, selectDay, prevMonth, nextMonth,
       appointments, loadAppointments, saveAppointment,
       consumption, conPatientId, selectedCon, selectedApt, toggleSelectCon, toggleSelectApt,
