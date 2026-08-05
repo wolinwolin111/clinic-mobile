@@ -37,8 +37,17 @@ jobs:
           yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
+      - name: Reuse APK signing key
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: clinic-mobile-debug-keystore-v1
+
       - name: Build installable APK
         run: gradle :app:assembleDebug --stacktrace
+
+      - name: Verify APK signature
+        run: "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --verbose app/build/outputs/apk/debug/app-debug.apk
 
       - name: Name APK
         shell: bash
