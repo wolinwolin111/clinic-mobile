@@ -21,6 +21,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.net.http.SslError;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -29,6 +33,8 @@ public class MainActivity extends Activity {
     private static final int STORAGE_PERMISSION_REQUEST = 1001;
 
     private WebView webView;
+    private FrameLayout rootView;
+    private ImageView coverView;
     private PendingDownload pendingDownload;
 
     @Override
@@ -36,9 +42,27 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(Color.rgb(49, 100, 179));
 
+        rootView = new FrameLayout(this);
+        rootView.setBackgroundColor(Color.WHITE);
+
         webView = new WebView(this);
         webView.setBackgroundColor(Color.rgb(247, 249, 252));
-        setContentView(webView);
+        webView.setVisibility(View.INVISIBLE);
+        rootView.addView(webView, new FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        ));
+
+        coverView = new ImageView(this);
+        coverView.setImageResource(R.drawable.app_cover);
+        coverView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        coverView.setBackgroundColor(Color.WHITE);
+        rootView.addView(coverView, new FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        ));
+
+        setContentView(rootView);
         configureWebView();
         webView.loadUrl(HOME_URL);
     }
@@ -65,6 +89,11 @@ public class MainActivity extends Activity {
                 }
                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
                 return true;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                showWebContent();
             }
 
             @Override
@@ -101,6 +130,20 @@ public class MainActivity extends Activity {
                 enqueueDownload(download);
             }
         });
+    }
+
+    private void showWebContent() {
+        if (webView.getVisibility() == View.VISIBLE) {
+            return;
+        }
+        webView.setAlpha(0f);
+        webView.setVisibility(View.VISIBLE);
+        webView.animate().alpha(1f).setDuration(220).start();
+        coverView.animate()
+            .alpha(0f)
+            .setDuration(180)
+            .withEndAction(() -> rootView.removeView(coverView))
+            .start();
     }
 
     private void enqueueDownload(PendingDownload download) {
@@ -179,4 +222,3 @@ public class MainActivity extends Activity {
         }
     }
 }
-
