@@ -40,16 +40,34 @@ jobs:
       - name: Reuse APK signing key
         uses: actions/cache@v4
         with:
-          path: ~/.android/debug.keystore
-          key: clinic-mobile-debug-keystore-v1
+          path: .signing/debug.keystore
+          key: clinic-mobile-debug-keystore-v2
+
+      - name: Prepare APK signing key
+        shell: bash
+        run: |
+          if [ ! -f .signing/debug.keystore ]; then
+            mkdir -p .signing
+            keytool -genkeypair -v \
+              -keystore .signing/debug.keystore \
+              -storepass android \
+              -alias androiddebugkey \
+              -keypass android \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -dname "CN=Yueshu Clinic, OU=Mobile, O=Yueshu Rehabilitation, C=CN"
+          fi
 
       - name: Build installable APK
+        env:
+          DEBUG_KEYSTORE_FILE: ${{ github.workspace }}/.signing/debug.keystore
         run: gradle :app:assembleDebug --stacktrace
 
       - name: Verify APK signature
         shell: bash
         run: |
-          "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --verbose app/build/outputs/apk/debug/app-debug.apk
+          "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --verbose --print-certs app/build/outputs/apk/debug/app-debug.apk
 
       - name: Name APK
         shell: bash

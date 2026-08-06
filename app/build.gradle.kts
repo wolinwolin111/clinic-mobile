@@ -14,6 +14,17 @@ android {
         versionName = "1.0.1"
     }
 
+    signingConfigs {
+        getByName("debug") {
+            System.getenv("DEBUG_KEYSTORE_FILE")?.let { keystorePath ->
+                storeFile = file(keystorePath)
+                storePassword = "android"
+                keyAlias = "androiddebugkey"
+                keyPassword = "android"
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
