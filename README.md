@@ -1,6 +1,9 @@
 # Clinic Mobile
 
-悦舒运动康复管理系统的移动端网页与 Android WebView 客户端。
+悦舒运动康复管理系统的 Android WebView 客户端（纯壳应用，无本地网页资源）。
+
+移动端网页部署在服务器 `https://66.154.101.204/mobile/`，源码由
+`clinic-business-fix` 仓库的 `mobile/` 目录维护；本仓库只负责打包 Android APK。
 
 ## APK 构建
 
