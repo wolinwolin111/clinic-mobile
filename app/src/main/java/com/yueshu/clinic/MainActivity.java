@@ -72,10 +72,33 @@ public class MainActivity extends Activity {
             ViewGroup.LayoutParams.MATCH_PARENT
         ));
 
-        swipeRefresh.setOnRefreshListener(webView::reload);
+        swipeRefresh.setOnRefreshListener(() -> {
+            // 原地刷新：让页面自己重新拉取当前页数据（不重载页面 —— SPA 重载等于回首页）。
+            // 页面刷新完毕后调用 NativePull.done() 收起转圈；5s 兜底防止卡转圈。
+            // 若是旧缓存页面（没有 __appRefresh），则 reload 一次让其拿到最新版。
+            webView.evaluateJavascript(
+                "(window.__appRefresh && window.__appRefresh()) || 'unsupported'",
+                value -> {
+                    if (value != null && value.contains("unsupported")) {
+                        webView.reload();
+                    }
+                    swipeRefresh.postDelayed(() -> swipeRefresh.setRefreshing(false), 5000);
+                }
+            );
+        });
+        webView.addJavascriptInterface(new PullBridge(), "NativePull");
         setContentView(rootView);
         configureWebView();
         webView.loadUrl(HOME_URL);
+    }
+
+    private class PullBridge {
+        @android.webkit.JavascriptInterface
+        public void done() {
+            runOnUiThread(() -> {
+                if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
+            });
+        }
     }
 
     private void configureWebView() {
