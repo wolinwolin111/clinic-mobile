@@ -27,6 +27,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 public class MainActivity extends Activity {
     private static final String HOME_URL = "https://66.154.101.204/mobile/";
     private static final String TRUSTED_HOST = "66.154.101.204";
@@ -34,6 +36,7 @@ public class MainActivity extends Activity {
 
     private WebView webView;
     private FrameLayout rootView;
+    private SwipeRefreshLayout swipeRefresh;
     private ImageView coverView;
     private PendingDownload pendingDownload;
 
@@ -45,10 +48,17 @@ public class MainActivity extends Activity {
         rootView = new FrameLayout(this);
         rootView.setBackgroundColor(Color.WHITE);
 
+        swipeRefresh = new SwipeRefreshLayout(this);
+        swipeRefresh.setColorSchemeColors(Color.rgb(79, 120, 190));
+
         webView = new WebView(this);
         webView.setBackgroundColor(Color.rgb(247, 249, 252));
         webView.setVisibility(View.INVISIBLE);
-        rootView.addView(webView, new FrameLayout.LayoutParams(
+        swipeRefresh.addView(webView, new FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        ));
+        rootView.addView(swipeRefresh, new FrameLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
         ));
@@ -62,8 +72,13 @@ public class MainActivity extends Activity {
             ViewGroup.LayoutParams.MATCH_PARENT
         ));
 
+        swipeRefresh.setOnRefreshListener(this::reloadHome);
         setContentView(rootView);
         configureWebView();
+        webView.loadUrl(HOME_URL);
+    }
+
+    private void reloadHome() {
         webView.loadUrl(HOME_URL);
     }
 
@@ -94,6 +109,7 @@ public class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 showWebContent();
+                swipeRefresh.setRefreshing(false);
             }
 
             @Override
