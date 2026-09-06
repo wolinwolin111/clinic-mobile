@@ -136,6 +136,8 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                // 新页面自带上报机制；重置锁定避免上一页面残留的锁定卡住下拉刷新。
+                swipeRefresh.setPageLocked(false);
                 showWebContent();
                 swipeRefresh.setRefreshing(false);
             }
