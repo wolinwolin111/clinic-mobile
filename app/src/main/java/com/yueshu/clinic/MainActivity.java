@@ -72,13 +72,9 @@ public class MainActivity extends Activity {
             ViewGroup.LayoutParams.MATCH_PARENT
         ));
 
-        swipeRefresh.setOnRefreshListener(this::reloadHome);
+        swipeRefresh.setOnRefreshListener(webView::reload);
         setContentView(rootView);
         configureWebView();
-        webView.loadUrl(HOME_URL);
-    }
-
-    private void reloadHome() {
         webView.loadUrl(HOME_URL);
     }
 
