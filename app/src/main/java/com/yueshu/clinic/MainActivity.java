@@ -27,8 +27,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 public class MainActivity extends Activity {
     private static final String HOME_URL = "https://66.154.101.204/mobile/";
     private static final String TRUSTED_HOST = "66.154.101.204";
@@ -36,7 +34,7 @@ public class MainActivity extends Activity {
 
     private WebView webView;
     private FrameLayout rootView;
-    private SwipeRefreshLayout swipeRefresh;
+    private LockableSwipeLayout swipeRefresh;
     private ImageView coverView;
     private PendingDownload pendingDownload;
 
@@ -48,7 +46,7 @@ public class MainActivity extends Activity {
         rootView = new FrameLayout(this);
         rootView.setBackgroundColor(Color.WHITE);
 
-        swipeRefresh = new SwipeRefreshLayout(this);
+        swipeRefresh = new LockableSwipeLayout(this);
         swipeRefresh.setColorSchemeColors(Color.rgb(79, 120, 190));
 
         webView = new WebView(this);
@@ -97,6 +95,17 @@ public class MainActivity extends Activity {
         public void done() {
             runOnUiThread(() -> {
                 if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
+            });
+        }
+
+        /**
+         * 页面上报下拉锁定状态：1 = 有弹窗打开或内部滚动区不在顶部，
+         * 原生层让位给 WebView 手势；0 = 恢复原生下拉刷新。
+         */
+        @android.webkit.JavascriptInterface
+        public void setLock(final int locked) {
+            runOnUiThread(() -> {
+                if (swipeRefresh != null) swipeRefresh.setPageLocked(locked != 0);
             });
         }
     }
