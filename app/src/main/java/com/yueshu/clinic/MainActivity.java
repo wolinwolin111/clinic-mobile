@@ -28,8 +28,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-    private static final String HOME_URL = "https://66.154.101.204/mobile/";
-    private static final String TRUSTED_HOST = "66.154.101.204";
+    private static final String HOME_URL = "https://clinic.yueshurehab.top/mobile/";
+    private static final String TRUSTED_HOST = "clinic.yueshurehab.top";
     private static final int STORAGE_PERMISSION_REQUEST = 1001;
 
     private WebView webView;
